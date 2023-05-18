@@ -15,15 +15,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.category;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="home", urlPatterns={"/home"})
-public class home extends HttpServlet {
+@WebServlet(name="category", urlPatterns={"/category"})
+public class category extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +34,16 @@ public class home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String cateID = request.getParameter("cid");
         
         productDAO pDAO = new productDAO();
-        List<product> listP = pDAO.selectAll();
-        List<product> listB = pDAO.getBestsl();
-        
+        List<product> listP = pDAO.getbycate(cateID);
         
         categoryDAO cDAO = new categoryDAO();
-        List<category> listC = cDAO.selectAll();
+        List<model.category> listC = cDAO.selectAll();
         
         request.setAttribute("dataP", listP);
-        request.setAttribute("dataB", listB);
+        
         request.setAttribute("dataC", listC);
         request.getRequestDispatcher("index.jsp").forward(request, response);  
     } 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/managerProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/style/home.css</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/product.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/dao/productDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/dao/categoryDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/model/category.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/addProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/test.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/index.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/home.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/dao/userDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/editProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/style/magerProduct.css</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/model/product.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/dao/DAOinterface.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/src/java/controller/deleteProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/btlWeb_1/web/ManagerProduct.jsp</file>
+        </group>
+    </open-files>
+</project-private>

@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
-import dao.categoryDAO;
 import dao.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,45 +12,45 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.category;
-import model.product;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="home", urlPatterns={"/home"})
-public class home extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+@WebServlet(name = "addProduct", urlPatterns = {"/addProduct"})
+public class addProduct extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        request.setCharacterEncoding("UTF-8");
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String priceP = request.getParameter("price");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+        String qty = request.getParameter("qty");
+        int catId = Integer.parseInt(category);
+        double price = Double.parseDouble(priceP);
+
         productDAO pDAO = new productDAO();
-        List<product> listP = pDAO.selectAll();
-        List<product> listB = pDAO.getBestsl();
-        
-        
-        categoryDAO cDAO = new categoryDAO();
-        List<category> listC = cDAO.selectAll();
-        
-        request.setAttribute("dataP", listP);
-        request.setAttribute("dataB", listB);
-        request.setAttribute("dataC", listC);
-        request.getRequestDispatcher("index.jsp").forward(request, response);  
-    } 
+        pDAO.insert(name, catId, image, qty, catId, price);
+        response.sendRedirect("managerProduct");
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -60,12 +58,13 @@ public class home extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -73,12 +72,13 @@ public class home extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override

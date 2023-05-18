@@ -15,15 +15,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.category;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="home", urlPatterns={"/home"})
-public class home extends HttpServlet {
+@WebServlet(name="managerProduct", urlPatterns={"/managerProduct"})
+public class managerProduct extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,18 +35,17 @@ public class home extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        
         productDAO pDAO = new productDAO();
         List<product> listP = pDAO.selectAll();
-        List<product> listB = pDAO.getBestsl();
         
         
         categoryDAO cDAO = new categoryDAO();
-        List<category> listC = cDAO.selectAll();
+        List<model.category> listC = cDAO.selectAll();
         
-        request.setAttribute("dataP", listP);
-        request.setAttribute("dataB", listB);
-        request.setAttribute("dataC", listC);
-        request.getRequestDispatcher("index.jsp").forward(request, response);  
+        request.setAttribute("listP", listP);
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);  
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

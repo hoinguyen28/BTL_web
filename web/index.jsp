@@ -16,7 +16,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">  
         <link href="./assets/fonts/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="style/home.css">
         <title>Schon</title>
@@ -347,35 +346,21 @@
                             <div class="row">
                                 <div class="col l-12 c-12 m12 product__navbar">
                                     <div class="product__filter-select">
-                                        <div class="product__filter-options active">
-                                            <h2>Features</h2>
-                                        </div>
-                                        <div class="product__filter-options">
-                                            <h2>Latest</h2>
-                                        </div>
-                                        <div class="product__filter-options">
-                                            <h2>Best Seller</h2>
-                                        </div>
+                                        <c:forEach items = "${dataC}" var = "o">
+                                            <div class="product__filter-options ">
+                                                <a href="category?cid=${o.cid} ">
+                                                    <h2>${o.cname}</h2>
+                                                </a>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="product__content">
-                            <div class="row product__row  active">
-                                <div class="col">
-                                    <c:forEach items = "${requestScope.dataP}" var ="o">
-                                        <div class="product-card">
-                                            <div class="img">
-                                                <img src="${o.image}" alt="Product Image">
-                                            </div>
-                                            <h3 class="product-name">${o.name}</h3>
-                                            <p class="product-description">${o.des}</p>
-                                            <p class="product-price">${o.price}</p>
-                                            <a href="detail?pid=${o.id}"  class="buy-button">Buy Now</a>
-                                        </div>
-
-                                    </c:forEach>
-                                    <c:forEach items = "${requestScope.dataP}" var ="o">
+                            <div class="row active product__row">
+                                <c:forEach items = "${requestScope.dataP}" var ="o">
+                                    <div class="col">
                                         <div class="product__item active l-12 m-12 c-12" >
                                             <div class="product__item-img">
                                                 <img src="${o.image}" alt="lounge chair">
@@ -402,8 +387,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </c:forEach>
-                                </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
@@ -422,9 +407,10 @@
                         </div>
                     </div>
                     <div class="row">
+                        <c:forEach items = "${requestScope.dataB}" var ="o">
                         <div class="product__item product__seller-item">
                             <div class="product__item-img">
-                                <img src="./assets/images/products/img01.jpg" alt="lounge chair">
+                                <img src="${o.image}" alt="lounge chair">
                             </div>
                             <div class="product__item-body product__seller-body">
                                 <div class="product__item-rating">
@@ -434,10 +420,10 @@
                                     <i class="far fa-star"></i>
                                 </div>
                                 <div class="product__item-name">
-                                    <p>Puff chair</p>
+                                    <p>${o.name}</p>
                                 </div>
                                 <div class="product__item-price">
-                                    <h3><i class="fas fa-euro-sign"></i>287,00</h3>
+                                    <h3><i class="fas fa-euro-sign"></i>${o.price}</h3>
                                 </div>
                                 <div class="product__item-links product__seller-links">
                                     <ul>
@@ -448,6 +434,7 @@
                                 </div>
                             </div>
                         </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>

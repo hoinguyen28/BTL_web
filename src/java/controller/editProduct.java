@@ -5,7 +5,6 @@
 
 package controller;
 
-import dao.categoryDAO;
 import dao.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,16 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.category;
 import model.product;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name="home", urlPatterns={"/home"})
-public class home extends HttpServlet {
+@WebServlet(name="editProduct", urlPatterns={"/editProduct"})
+public class editProduct extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,19 +32,13 @@ public class home extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        String pid  = request.getParameter("pid");
+        int id = Integer.parseInt(pid);
+        productDAO DAO = new productDAO();
+        product p = DAO.getProductById(id);
+        request.setAttribute("detail", p);
+        request.getRequestDispatcher("edit.jsp").forward(request, response);
         
-        productDAO pDAO = new productDAO();
-        List<product> listP = pDAO.selectAll();
-        List<product> listB = pDAO.getBestsl();
-        
-        
-        categoryDAO cDAO = new categoryDAO();
-        List<category> listC = cDAO.selectAll();
-        
-        request.setAttribute("dataP", listP);
-        request.setAttribute("dataB", listB);
-        request.setAttribute("dataC", listC);
-        request.getRequestDispatcher("index.jsp").forward(request, response);  
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,6 +53,7 @@ public class home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
+        
     } 
 
     /** 
