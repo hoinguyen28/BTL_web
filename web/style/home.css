@@ -740,6 +740,7 @@ input {
     vertical-align: top;
     display: inline-block;
     font: 300 14px/20px "Source Sans Pro", sans-serif;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -2663,6 +2664,7 @@ input {
     font-weight: 300;
 }
 
+
 .search__blog form fieldset a {
     position: absolute;
     font-size: 25px;
@@ -2799,6 +2801,7 @@ input {
 .header__list {
     position: relative;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .header__list i {

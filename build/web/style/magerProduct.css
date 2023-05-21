@@ -1,16 +1,7 @@
 
-/* Container */
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Table */
 .table-wrapper {
     background: #fff;
-    padding: 20px;
-    margin-top: 20px;
+    margin-top: 100px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -23,19 +14,25 @@
     margin-bottom: 0;
 }
 
-/* Add button */
+
 .add {
     display: flex;
     align-items: center;
     margin-left: auto;
+    cursor: pointer;
 }
 
 .add i {
     font-size: 24px;
     margin-right: 5px;
 }
+.btn_add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-/* Table */
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -60,13 +57,13 @@
     margin: 0 auto;
 }
 
-/* Actions */
+
 .table td a {
     color: #333;
     margin-right: 10px;
 }
 
-/* Description */
+
 .table td .description {
     white-space: nowrap;
     overflow: hidden;
@@ -80,11 +77,42 @@
     overflow: visible;
 }
 
-/* Back to home button */
+
 .btn-primary {
-    margin-top: 20px;
+    margin: 30px 0;
 }
 
 .price {
     min-width: 50px;
+}
+
+.fa-solid:hover {
+    color: #ff6060;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal__content {
+    width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: showModal linear 0.2s;
+    position: relative;
+    margin: 200px auto;
+    padding: 30px;
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
 }

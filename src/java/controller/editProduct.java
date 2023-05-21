@@ -32,12 +32,22 @@ public class editProduct extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid  = request.getParameter("pid");
+        request.setCharacterEncoding("UTF-8");
+        String pid = request.getParameter("id");
+        String name = request.getParameter("name");
+        String image = request.getParameter("image");
+        String priceP = request.getParameter("price");
+        String des = request.getParameter("description");
+        String category = request.getParameter("category");
+        String qtyP = request.getParameter("qty");
         int id = Integer.parseInt(pid);
-        productDAO DAO = new productDAO();
-        product p = DAO.getProductById(id);
-        request.setAttribute("detail", p);
-        request.getRequestDispatcher("edit.jsp").forward(request, response);
+        int qty = Integer.parseInt(qtyP);
+        int catId = Integer.parseInt(category);
+        double price = Double.parseDouble(priceP);
+        
+        productDAO pDAO = new productDAO();
+        pDAO.update(id, name, catId, image, des, qty, price);
+        response.sendRedirect("managerProduct");
         
     } 
 

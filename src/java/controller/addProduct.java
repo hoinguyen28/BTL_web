@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dao.categoryDAO;
 import dao.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  *
@@ -36,14 +38,15 @@ public class addProduct extends HttpServlet {
         String name = request.getParameter("name");
         String image = request.getParameter("image");
         String priceP = request.getParameter("price");
-        String description = request.getParameter("description");
+        String des = request.getParameter("description");
         String category = request.getParameter("category");
-        String qty = request.getParameter("qty");
+        String qtyP = request.getParameter("qty");
+        int qty = Integer.parseInt(qtyP);
         int catId = Integer.parseInt(category);
         double price = Double.parseDouble(priceP);
 
         productDAO pDAO = new productDAO();
-        pDAO.insert(name, catId, image, qty, catId, price);
+        pDAO.insert(name, catId, image, des, qty, price);
         response.sendRedirect("managerProduct");
     }
 

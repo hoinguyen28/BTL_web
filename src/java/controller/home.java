@@ -38,14 +38,12 @@ public class home extends HttpServlet {
         
         productDAO pDAO = new productDAO();
         List<product> listP = pDAO.selectAll();
-        List<product> listB = pDAO.getBestsl();
         
         
         categoryDAO cDAO = new categoryDAO();
         List<category> listC = cDAO.selectAll();
         
         request.setAttribute("dataP", listP);
-        request.setAttribute("dataB", listB);
         request.setAttribute("dataC", listC);
         request.getRequestDispatcher("index.jsp").forward(request, response);  
     } 

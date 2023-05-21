@@ -28,7 +28,7 @@ public class productDAO {
     }
 
     public void insert(String name, int catId, String image, String des, int qty, Double price) {
-        String query = "INSERT INTO product (name, catId, image, des, qty, price) \n"
+        String query = "INSERT INTO product (name, cid, image, price, qty, des) \n"
                 + "VALUES (?, ?, ?, ?, ?, ?);";
         try {
             Connection conn = JDBC.getConnection();
@@ -36,9 +36,9 @@ public class productDAO {
             ps.setString(1, name);
             ps.setInt(2, catId);
             ps.setString(3, image);
-            ps.setString(4, des);
+            ps.setDouble(4, price);
             ps.setInt(5, qty);
-            ps.setDouble(6, price);
+            ps.setString(6, des);
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -52,6 +52,26 @@ public class productDAO {
             Connection conn = JDBC.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, pid);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+        }
+    }
+
+    public void update(int id, String name, int catId, String image, String des, int qty, Double price) {
+        String query = "UPDATE product\n"
+                + "SET NAME = ?, cid = ?, image=?, price = ?, qty = ?, des= ?\n"
+                + "WHERE id = ?";
+        try {
+            Connection conn = JDBC.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setInt(2, catId);
+            ps.setString(3, image);
+            ps.setDouble(4, price);
+            ps.setInt(5, qty);
+            ps.setString(6, des);
+            ps.setInt(7, id);
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -72,8 +92,7 @@ public class productDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getInt(6),
-                        rs.getDouble(7),
-                        rs.getInt(8)));
+                        rs.getDouble(7)));
             }
         } catch (SQLException e) {
         }
@@ -97,14 +116,13 @@ public class productDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getInt(6),
-                        rs.getDouble(7),
-                        rs.getInt(8)));
+                        rs.getDouble(7)));
             }
         } catch (SQLException e) {
         }
         return list;
     }
-    
+
     public List<product> getBestsl() {
 
         List<product> list = new ArrayList<>();
@@ -121,8 +139,7 @@ public class productDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getInt(6),
-                        rs.getDouble(7),
-                        rs.getInt(8)));
+                        rs.getDouble(7)));
             }
         } catch (SQLException e) {
         }
@@ -144,14 +161,12 @@ public class productDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getInt(6),
-                        rs.getDouble(7),
-                        rs.getInt(8));
+                        rs.getDouble(7));
             }
 
         } catch (Exception e) {
         }
         return null;
     }
-
 
 }

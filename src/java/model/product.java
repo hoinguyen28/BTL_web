@@ -16,12 +16,11 @@ public class product {
     private String des;
     private int qty;
     private Double price;
-    private int bestSl;
 
     public product() {
     }
 
-    public product(int id, String name, int catId, String image, String des, int qty, Double price, int bestSl) {
+    public product(int id, String name, int catId, String image, String des, int qty, Double price) {
         this.id = id;
         this.name = name;
         this.catId = catId;
@@ -29,7 +28,6 @@ public class product {
         this.des = des;
         this.qty = qty;
         this.price = price;
-        this.bestSl = bestSl;
     }
 
     public int getId() {
@@ -87,13 +85,7 @@ public class product {
     public void setPrice(Double price) {
         this.price = price;
     }
+    
 
-    public int getBestSl() {
-        return bestSl;
-    }
-
-    public void setBestSl(int bestSl) {
-        this.bestSl = bestSl;
-    }
     
 }

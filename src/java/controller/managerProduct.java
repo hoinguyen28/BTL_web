@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-
 package controller;
 
 import dao.categoryDAO;
@@ -21,45 +20,37 @@ import model.product;
  *
  * @author Admin
  */
-@WebServlet(name="managerProduct", urlPatterns={"/managerProduct"})
+@WebServlet(name = "managerProduct", urlPatterns = {"/managerProduct"})
 public class managerProduct extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        
+
         productDAO pDAO = new productDAO();
         List<product> listP = pDAO.selectAll();
-        
-        
+
         categoryDAO cDAO = new categoryDAO();
         List<model.category> listC = cDAO.selectAll();
-        
+
         request.setAttribute("listP", listP);
         request.setAttribute("listC", listC);
-        request.getRequestDispatcher("ManagerProduct.jsp").forward(request, response);  
-    } 
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+        request.getRequestDispatcher("managerProduct.jsp").forward(request, response);
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
+        
     } 
 
     /** 
@@ -83,5 +74,4 @@ public class managerProduct extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
