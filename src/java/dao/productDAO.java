@@ -103,7 +103,7 @@ public class productDAO {
 
         List<product> list = new ArrayList<>();
         String query = "SELECT * FROM product\n"
-                + "where category_id = ?";
+                + "where cid = ?";
         try {
             Connection conn = JDBC.getConnection();
             ps = conn.prepareStatement(query);

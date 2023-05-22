@@ -30,12 +30,12 @@
                     <nav class="header__nav">
                         <ul class="header__menu">
                             <li class="header__list">
-                                <a class="drop-link" >HOME
+                                <a href="home" class="drop-link" >HOME
                                     <i class="fas fa-angle-down"></i>
                                 </a>
                             </li>
                             <li class="header__list">
-                                <a class="drop-link" 
+                                <a href="product" class="drop-link" 
                                    >PRODUCTS
                                     <i class="fas fa-angle-down"></i>
                                 </a>
@@ -171,8 +171,8 @@
                 </div>
             </div>
             <!-- begin login form -->
-            <div class="login">
-                <div class="login__container">
+            <div style='display: block' class="login">
+                <div style='right: 0;position: absolute' class="login__container">
                     <div class="login__header">
                         <div class="login__title">
                             <h2>MY ACCOUNT</h2>
@@ -189,16 +189,9 @@
                                     Welcome back! Sign in to Your Account
                                 </p>
                             </div>
-                            <form action="#">
-                                <input type="text" class="login__form__control login__user-name" placeholder="Username or email address">
-                                <input type="password" class="login__form__control login__password" placeholder="Password">
-                                <div class="login__form__helper">
-                                    <div class="login__form__checkbox">
-                                        <input class="form__acp" type="checkbox" id="remember">
-                                        <label for="remember">Remember Me</label>
-                                    </div>
-                                    <div class="login__form__help"><a href="#">Help?</a></div>
-                                </div>
+                            <form action="login" method = "post">
+                                <input type="text" name="user" class="login__form__control login__user-name" placeholder="Username">
+                                <input type="password" name="password" class="login__form__control login__password" placeholder="Password">      
                                 <button type="submit" class="login__btn">Login</button>
                             </form>
                         </div>
@@ -215,7 +208,13 @@
                                 </p>
                             </div>
                             <form action="#">
-                                <input type="text" class="login__form__control" placeholder="Username or email address">
+                                <input type="text" class="login__form__control" placeholder="Username">
+                                <input type="text" class="login__form__control" placeholder="Email address">
+                                <input type="text" class="login__form__control" placeholder="Full name">
+                                <input type="text" class="login__form__control" placeholder="Phone number">
+                                <input type="text" class="login__form__control" placeholder="Address">
+                                <input type="text" class="login__form__control" placeholder="Password">
+                                <input type="text" class="login__form__control" placeholder="cd">
                                 <button type="submit" class="login__btn">Register</button>
                             </form>
 
@@ -243,7 +242,6 @@
             <!-- end header search -->
         </header>
         <!--END HEADER-->
-
 
     </body>
 </html>

@@ -1624,7 +1624,7 @@ input {
 }
 
 .top {
-    background-image: url("../assets/images/products/img100.jpg");
+    background-image: url("assets/img100.jpg");
     background-repeat: cover;
     width: 100%;
     margin: 0px 0px 4px;
@@ -3583,13 +3583,14 @@ input {
     left: 0;
     z-index: 5;
     background-color: rgba(0, 0, 0, 0.3);
-    display: none;
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: flex-end;
 }
 
 .login__container {
+    right: 0;
+    position: absolute;
     width: 385px;
     height: 100%;
     overflow-y: scroll;
