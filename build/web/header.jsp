@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -23,12 +25,24 @@
             <div class="grid wide">
                 <div class="header__wrap row">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="home">
                             <img src="assets/logo.png" alt="logo" />
                         </a>
                     </div>
                     <nav class="header__nav">
                         <ul class="header__menu">
+                            <c:if test="${sessionScope.acc.isAdmin == 1}">
+                                <li class="header__list">
+                                    <a href="managerProduct" class="drop-link" >MANAGER PRODUCT
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="header__list">
+                                    <a href="managerUser" class="drop-link" >MANAGER USER
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                            </c:if>
                             <li class="header__list">
                                 <a href="home" class="drop-link" >HOME
                                     <i class="fas fa-angle-down"></i>
@@ -40,16 +54,25 @@
                                     <i class="fas fa-angle-down"></i>
                                 </a>
                             </li>
-                            <li class="header__list">
-                                <a class="drop-link" >BLOG <i class="fas fa-angle-down"></i></a>
-                            </li>
-                            <li class="header__list">
-                                <a >ABOUT</a>
-                            </li>
-                            <li class="header__list">
-                                <a class="drop-link" >CONTACT
-                                    <i class="fas fa-angle-down"></i></a>
-                            </li>
+                            <c:if test="${sessionScope.acc == null}">
+                                <li class="header__list">
+                                    <a href="login.jsp" class="drop-link" >LOGIN
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                            </c:if>
+                            <c:if test="${sessionScope.acc != null}">
+                                <li class="header__list">
+                                    <a href="" class="drop-link" >HELLO ${sessionScope.acc.userName}
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                                <li class="header__list">
+                                    <a href="logout" class="drop-link" >LOGOUT
+                                        <i class="fas fa-angle-down"></i>
+                                    </a>
+                                </li>
+                            </c:if>
                         </ul>
                     </nav>
                     <div class="header__icon">
@@ -171,7 +194,7 @@
                 </div>
             </div>
             <!-- begin login form -->
-            <div style='display: block' class="login">
+            <div style='display: none' class="login">
                 <div style='right: 0;position: absolute' class="login__container">
                     <div class="login__header">
                         <div class="login__title">
@@ -207,17 +230,16 @@
                                     Create your very own account
                                 </p>
                             </div>
-                            <form action="#">
-                                <input type="text" class="login__form__control" placeholder="Username">
-                                <input type="text" class="login__form__control" placeholder="Email address">
-                                <input type="text" class="login__form__control" placeholder="Full name">
-                                <input type="text" class="login__form__control" placeholder="Phone number">
-                                <input type="text" class="login__form__control" placeholder="Address">
-                                <input type="text" class="login__form__control" placeholder="Password">
-                                <input type="text" class="login__form__control" placeholder="cd">
+                            <form action="signup">
+                                <input name="userName" type="text" class="login__form__control" placeholder="Username">
+                                <input name="email" type="text" class="login__form__control" placeholder="Email address">
+                                <input name="name" type="text" class="login__form__control" placeholder="Full name">
+                                <input name="phone" type="text" class="login__form__control" placeholder="Phone number">
+                                <input name="address" type="text" class="login__form__control" placeholder="Address">
+                                <input name="password" type="text" class="login__form__control" placeholder="Password">
+                                <input  type="text" class="login__form__control" placeholder="cd">
                                 <button type="submit" class="login__btn">Register</button>
                             </form>
-
                         </div>
                     </div>
                 </div>

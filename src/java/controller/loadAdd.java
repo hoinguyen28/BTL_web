@@ -5,7 +5,7 @@
 
 package controller;
 
-import dao.categoryDAO;
+import dal.categoryDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;

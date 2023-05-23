@@ -1187,10 +1187,6 @@ input {
     -webkit-transition: 0.6s;
     transition: 0.6s;
 }
-.product__item-img {
-    margin-left: 50px;
-
-}
 
 .product__item-img img {
     width: 200px;
@@ -3684,7 +3680,7 @@ input {
     position: relative;
     color: #9a9a9a;
     padding-left: 4px;
-    font: 11px/18px "Oxygen", sans-serif;
+    font: 12px/18px "Oxygen", sans-serif;
 }
 
 .login__form__help a {

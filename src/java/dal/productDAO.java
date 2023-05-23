@@ -2,11 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dao;
+package dal;
 
-import database.JDBC;
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSet;
@@ -31,7 +29,7 @@ public class productDAO {
         String query = "INSERT INTO product (name, cid, image, price, qty, des) \n"
                 + "VALUES (?, ?, ?, ?, ?, ?);";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, name);
             ps.setInt(2, catId);
@@ -49,7 +47,7 @@ public class productDAO {
         String query = "DELETE FROM product \n"
                 + "WHERE id = ?";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, pid);
             ps.executeUpdate();
@@ -63,7 +61,7 @@ public class productDAO {
                 + "SET NAME = ?, cid = ?, image=?, price = ?, qty = ?, des= ?\n"
                 + "WHERE id = ?";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, name);
             ps.setInt(2, catId);
@@ -82,7 +80,7 @@ public class productDAO {
         List<product> list = new ArrayList<>();
         String query = "SELECT * FROM product";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -105,7 +103,7 @@ public class productDAO {
         String query = "SELECT * FROM product\n"
                 + "where cid = ?";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, cid);
             rs = ps.executeQuery();
@@ -129,7 +127,7 @@ public class productDAO {
         String query = "SELECT * FROM product\n"
                 + "where bestSl = 1";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -150,7 +148,7 @@ public class productDAO {
         String query = "SELECT * FROM product \n"
                 + "WHERE id = ?";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, id);
             rs = ps.executeQuery();

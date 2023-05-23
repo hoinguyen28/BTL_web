@@ -4,14 +4,16 @@
  */
 package controller;
 
-import dao.userDAO;
+import dal.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.user;
 
 /**
@@ -32,18 +34,7 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("user");
-        String password = request.getParameter("password");
 
-        userDAO uDAO = new userDAO();
-        user a = uDAO.login(userName, password);
-
-        if (a == null) {
-            request.getRequestDispatcher("product").forward(request, response);
-        } else {
-        response.sendRedirect("managerProduct");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,7 +49,9 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        request.getRequestDispatcher("login").forward(request, response);
+
     }
 
     /**
@@ -72,7 +65,41 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String rem = request.getParameter("rem");
+
+        userDAO uDAO = new userDAO();
+        user a = uDAO.login(userName, password);
+
+        Cookie cUser = new Cookie("cUser", userName);
+        Cookie cPass = new Cookie("cPass", password);
+        Cookie cRem = new Cookie("cRem", rem);
+
+        if (rem != null) {
+            cUser.setMaxAge(60 * 60 * 24 * 30);
+            cPass.setMaxAge(60 * 60 * 24 * 30);
+            cRem.setMaxAge(60 * 60 * 24 * 30);
+        } else {
+            cUser.setMaxAge(0);
+            cPass.setMaxAge(0);
+            cRem.setMaxAge(0);
+        }
+
+        response.addCookie(cUser);
+        response.addCookie(cPass);
+        response.addCookie(cRem);
+
+        if (a == null) {
+            request.setAttribute("messError", "UserName invalid!!");
+            request.getRequestDispatcher("login").forward(request, response);
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", a);
+            response.sendRedirect("home");
+        }
     }
 
     /**
