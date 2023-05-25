@@ -20,7 +20,7 @@ import java.util.List;
  * @author Admin
  */
 @WebServlet(name="add", urlPatterns={"/add"})
-public class loadAdd extends HttpServlet {
+public class loadAddProduct extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

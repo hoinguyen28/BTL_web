@@ -4,8 +4,7 @@
  */
 package controller;
 
-import dal.categoryDAO;
-import dal.productDAO;
+import dal.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,15 +12,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.product;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "managerProduct", urlPatterns = {"/managerProduct"})
-public class managerProduct extends HttpServlet {
+@WebServlet(name = "editUser", urlPatterns = {"/editUser"})
+public class editUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,28 +31,42 @@ public class managerProduct extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String uid = request.getParameter("id");
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String isAdminU = request.getParameter("isAdmin");
+        int isAdmin = Integer.parseInt(isAdminU);
+        int id = Integer.parseInt(uid);
+
+        userDAO uDAO = new userDAO();
+        uDAO.update(id, userName, email, name, phone, address, password, isAdmin);
+        response.sendRedirect("managerUser");
     }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-//        processRequest(request, response);
-        response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
 
-        productDAO pDAO = new productDAO();
-        List<product> listP = pDAO.selectAll();
-
-        categoryDAO cDAO = new categoryDAO();
-        List<model.category> listC = cDAO.selectAll();
-
-        request.setAttribute("listP", listP);
-        request.setAttribute("listC", listC);
-        request.getRequestDispatcher("managerProduct.jsp").forward(request, response);
-        
-    } 
-
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -63,16 +74,18 @@ public class managerProduct extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

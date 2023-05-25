@@ -22,7 +22,7 @@
                 <div class="table-title">
                     <div class="row btn_add">
                         <div class="">
-                            <h2>Manage <b>Product</b></h2>
+                            <h2>Manager <b>Product</b></h2>
                         </div>
                         <a href="add">
                             <div class="add btn">

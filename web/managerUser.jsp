@@ -17,46 +17,46 @@
 
     <body>
         <jsp:include page="header.jsp"/>
+        <h1>${a}</h1>
         <div class="container">
-            <div class="table-wrapper">
+            <div style='width: 100%;' class="table-wrapper">
                 <div class="table-title">
                     <div class="row btn_add">
                         <div class="">
-                            <h2>Manager <b>Product</b></h2>
+                            <h2>Manager <b>User</b></h2>
                         </div>
-                        <a href="add">
+                        <a href="addUser.jsp">
                             <div class="add btn">
                                 <i class="fa-solid fa-circle-plus"></i>
-                                <p>Add New Product</p>
+                                <p>Add New User</p>
                             </div>
                         </a>
-
                     </div>
                 </div>
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Image</th>
-                            <th>Description</th>
-                            <th>Price</th>
+                            <th>UserName</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach items="${listP}" var="o">
+                        <c:forEach items="${listU}" var="o">
                             <tr>
                                 <td>${o.id}</td>
-                                <td>${o.name}</td>
+                                <td>${o.userName}</td>
+                                <td>${o.password}</td>
+                                <td>${o.email}</td>
+                                <td>${o.phone}</td>
+                                <td>${o.address}</td>
                                 <td>
-                                    <img src="${o.image}">
-                                </td>
-                                <td class="des">${o.des}</td>
-                                <td class="price">${o.price}$</td>
-                                <td>
-                                    <a href="loadEdit?pid=${o.id}"  class="edit" data-toggle="modal"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="deleteProduct?pid=${o.id}" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"></i> </a>
+                                    <a href="loadEditUser?uid=${o.id}" class="edit" data-toggle="modal"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="deleteUser?uid=${o.id}" class="delete" data-toggle="modal"><i class="fa-solid fa-trash"></i> </a>
                                 </td>
                             </tr>
                         </c:forEach>

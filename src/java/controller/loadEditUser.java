@@ -4,8 +4,7 @@
  */
 package controller;
 
-import dal.categoryDAO;
-import dal.productDAO;
+import dal.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,15 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.product;
+import model.user;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "loadEdit", urlPatterns = {"/loadEdit"})
-public class loadEdit extends HttpServlet {
+@WebServlet(name = "loadEditUser", urlPatterns = {"/loadEditUser"})
+public class loadEditUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,17 +33,14 @@ public class loadEdit extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pid = request.getParameter("pid");
-        int id = Integer.parseInt(pid);
-        productDAO DAO = new productDAO();
-        product p = DAO.getProductById(id);
-        
-        categoryDAO cDAO = new categoryDAO();
-        List<model.category> listC = cDAO.selectAll();
+        String uid = request.getParameter("uid");
+        int id = Integer.parseInt(uid);
 
-        request.setAttribute("listC", listC);
-        request.setAttribute("detail", p);
-        request.getRequestDispatcher("editProduct.jsp").forward(request, response);
+        userDAO uDAO = new userDAO();
+        user u = uDAO.getUserById(id);
+
+        request.setAttribute("user", u);
+        request.getRequestDispatcher("editUser.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
