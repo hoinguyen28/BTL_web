@@ -121,6 +121,32 @@ public class productDAO {
         return list;
     }
 
+    public List<product> searchByKey(String key) {
+
+        List<product> list = new ArrayList<>();
+        String query = "SELECT * FROM product\n"
+                + "WHERE 1=1";
+        try {
+            Connection conn = DBContext.getConnection();
+            if (key != null && !key.equals("")) {
+                query += " and name like '%" + key + "%' or des like '%"+key+"%'";
+            }
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getDouble(7)));
+            }
+        } catch (SQLException e) {
+        }
+        return list;
+    }
+
     public product getProductById(int id) {
         String query = "SELECT * FROM product \n"
                 + "WHERE id = ?";

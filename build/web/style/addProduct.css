@@ -96,3 +96,19 @@ textarea {
     box-sizing: border-box;
     font: 300 14px/20px "Source Sans Pro", sans-serif;
 }
+
+.signup_link {
+	margin: 25px 0;
+	text-align: center;
+	font-size: 16px;
+	color: #666666;
+}
+
+.signup_link a {
+	color: #2691d9;
+        text-decoration: none;
+}
+
+.signup_link a:hover {
+	text-decoration: underline;
+}

@@ -14,7 +14,6 @@
         <title>Manager Product</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="style/magerProduct.css">
-
     <body>
         <jsp:include page="header.jsp"/>
         <div class="container">

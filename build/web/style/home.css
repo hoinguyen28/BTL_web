@@ -740,7 +740,7 @@ input {
     vertical-align: top;
     display: inline-block;
     font: 300 14px/20px "Source Sans Pro", sans-serif;
-    cursor: pointer;
+    cursor: pointer !important;
 }
 
 .btn:hover {
@@ -2035,9 +2035,6 @@ input {
 }
 
 .right__bot li {
-    width: 33%;
-    padding: 0 0 28px;
-    vertical-align: top;
 }
 
 .right__large {

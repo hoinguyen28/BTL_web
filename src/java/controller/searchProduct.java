@@ -4,24 +4,23 @@
  */
 package controller;
 
-import dal.userDAO;
+import dal.categoryDAO;
+import dal.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.user;
+import java.util.List;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class login extends HttpServlet {
+@WebServlet(name = "searchProduct", urlPatterns = {"/searchProduct"})
+public class searchProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +33,18 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String txtSearch = request.getParameter("search");
 
+        productDAO pDAO = new productDAO();
+        List<model.product> listP = pDAO.searchByKey(txtSearch);
+
+        categoryDAO cDAO = new categoryDAO();
+        List<model.category> listC = cDAO.selectAll();
+        
+        request.setAttribute("dataP", listP);
+        request.setAttribute("dataC", listC);
+        request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,8 +59,7 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        request.getRequestDispatcher("login").forward(request, response);
+        processRequest(request, response);
 
     }
 
@@ -65,41 +74,8 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-        String rem = request.getParameter("rem");
+        processRequest(request, response);
 
-        userDAO uDAO = new userDAO();
-        user a = uDAO.login(userName, password);
-
-        Cookie cUser = new Cookie("cUser", userName);
-        Cookie cPass = new Cookie("cPass", password);
-        Cookie cRem = new Cookie("cRem", rem);
-
-        if (rem != null) {
-            cUser.setMaxAge(60 * 60 * 24 * 30);
-            cPass.setMaxAge(60 * 60 * 24 * 30);
-            cRem.setMaxAge(60 * 60 * 24 * 30);
-        } else {
-            cUser.setMaxAge(0);
-            cPass.setMaxAge(0);
-            cRem.setMaxAge(0);
-        }
-
-        response.addCookie(cUser);
-        response.addCookie(cPass);
-        response.addCookie(cRem);
-
-        if (a == null) {
-            request.setAttribute("messError", "Wrong username or password !!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            response.sendRedirect("home");
-        }
     }
 
     /**

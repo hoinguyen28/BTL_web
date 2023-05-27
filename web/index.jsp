@@ -135,34 +135,36 @@
                         <div class="product__content">
                             <div class="row active product__row">
                                 <c:forEach items = "${requestScope.dataP}" var ="o">
-                                    <div class="col">
-                                        <div class="product__item active l-12 m-12 c-12" >
-                                            <div class="product__item-img">
-                                                <img src="${o.image}" alt="lounge chair">
-                                            </div>
-                                            <div class="product__item-body">
-                                                <div class="product__item-rating">
-                                                    <i class="fas fa-star product__item-rating-current"></i>
-                                                    <i class="fas fa-star product__item-rating-current"></i>
-                                                    <i class="fas fa-star product__item-rating-current"></i>
-                                                    <i class="far fa-star"></i>
+                                    <a style='cursor: pointer;' href="detailProduct?pid=${o.id}">
+                                        <div class="col">
+                                            <div class="product__item active l-12 m-12 c-12" >
+                                                <div style='margin-left: 0px;' class="product__item-img">
+                                                    <img src="${o.image}" alt="lounge chair">
                                                 </div>
-                                                <div class="product__item-name">
-                                                    <p>${o.name}</p>
-                                                </div>
-                                                <div class="product__item-price">
-                                                    <h3><i class="fas fa-euro-sign"></i>${o.price}</h3>
-                                                </div>
-                                                <div class="product__item-links">
-                                                    <ul>
-                                                        <li><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
-                                                        <li><a href="#" class="product__link-item" ><i class="far fa-heart"></i></a></li>
-                                                        <li><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
-                                                    </ul>
+                                                <div class="product__item-body">
+                                                    <div class="product__item-rating">
+                                                        <i class="fas fa-star product__item-rating-current"></i>
+                                                        <i class="fas fa-star product__item-rating-current"></i>
+                                                        <i class="fas fa-star product__item-rating-current"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="product__item-name">
+                                                        <p>${o.name}</p>
+                                                    </div>
+                                                    <div class="product__item-price">
+                                                        <h3><i class="fas fa-euro-sign"></i>${o.price}</h3>
+                                                    </div>
+                                                    <div class="product__item-links">
+                                                        <ul style='background-color: white;'>
+                                                            <li><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
+                                                            <li><a href="#" class="product__link-item" ><i class="far fa-heart"></i></a></li>
+                                                            <li><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </c:forEach>
                             </div>
                         </div>

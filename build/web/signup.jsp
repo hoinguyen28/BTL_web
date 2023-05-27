@@ -14,24 +14,55 @@
         <link rel="stylesheet" href="style/home.css">     
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="style/addProduct.css">
+        <style>
+            small {
+                position: absolute;
+                left: 0;
+                top: 100%;
+                margin-top: 3px;
+                color: #e74c3c;
+            }
+        </style>
     </head>
+
     <body>
         <div id="signup" class="modal">
-            <div style='width: 30%;' class="modal-content"> 
+            <div id="signup_content" style='width: 30%;' class="modal-content"> 
                 <h6 style='text-align: center; margin-bottom: 30px; font-size: 25px;' class="login__account-title">SIGN IN</h6>
                 <p style='margin-bottom: 18px;' class="login__account-desc">Create your very own account</p>
-                <form id="addProductForm" action="signup" method="post">
-                    <input name="userName" type="text" class="login__form__control" placeholder="Username">
-                    <input name="email" type="text" class="login__form__control" placeholder="Email address">
-                    <input name="name" type="text" class="login__form__control" placeholder="Full name">
-                    <input name="phone" type="text" class="login__form__control" placeholder="Phone number">
-                    <input name="address" type="text" class="login__form__control" placeholder="Address">
-                    <input name="password" type="text" class="login__form__control" placeholder="Password">
-                    <input  type="text" class="login__form__control" placeholder="cd">
+                <form id="form__signup" action="signup" method="post">
+                    <div class="form-control">
+                        <p style='color: red; margin-bottom: 8px;' class="login__account-desc">${mess}</p>
+                        <input id="username" name="userName" type="text" class="login__form__control" placeholder="User name">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input id="email" name="email" type="text" class="login__form__control" placeholder="Email address">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input id="name" name="name" type="text" class="login__form__control" placeholder="Full name">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input id="phone" name="phone" type="text" class="login__form__control" placeholder="Phone number">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input id="address" name="address" type="text" class="login__form__control" placeholder="Address">
+                        <small></small>
+                    </div>
+                    <div class="form-control">
+                        <input id="password" name="password" type="text" class="login__form__control" placeholder="Password">
+                        <small></small>
+                    </div><div class="form-control">
+                        <input id="password2"  type="text" class="login__form__control" placeholder="Confirm password">
+                        <small></small>
+                    </div>
                     <a href="home">         
                         <input style='margin-top: 15px;' type="button" class="btn" data-dismiss="modal" value="Cancel">
                     </a>
-                    <input type="submit" class="btn" value="Login">
+                    <input type="submit" class="btn" value="Sign Up">
                 </form>
             </div>
         </div>

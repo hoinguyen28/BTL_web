@@ -249,21 +249,38 @@
             <!-- header search -->
             <div class="search">
                 <div class="search-container">
-                    <form action="#" method="get" target="_self" id="search__form">
+                    <form action="searchProduct" method="post" target="_self" id="search__form">
                         <fieldset>
-                            <input class="search__form-input" type="text" placeholder="Search...">
-                            <a href="#" class="search-micro-btn"><i class="fas fa-microphone micro"></i></a>
-                            <button class="search-btn modal__search" type="submit"><i class="fas fa-search"></i></button>
+                            <input name="search" class="search__form-input" type="text" placeholder="Search...">
+                            <button style='cursor: pointer' class="search-btn modal__search" type="submit"><i class="fas fa-search"></i></button>
                         </fieldset> 
                     </form>
                     <div class="search-close">
-                        <a href=""><i class="fas fa-times"></i></a>
+                        <a href=""><i style='font-size: 30px;' class="fas fa-times"></i></a>
                     </div>
                 </div>
             </div>
             <!-- end header search -->
         </header>
         <!--END HEADER-->
+        <script>
 
+// Show Search
+            const search = document.querySelector('.search');
+            const input = document.querySelector('.search__form-input');
+            const btnSearch = document.querySelector('.search-click');
+            const btnClose = document.querySelector('.search-close');
+            const modalSearch = document.querySelector('.modal__search');
+            function isShow() {
+                search.classList.add('isShow');
+                input.focus();
+            }
+            function isHide() {
+                search.classList.remove('isShow');
+            }
+            btnSearch.addEventListener('click', isShow);
+            btnClose.addEventListener('click', isHide);
+            modalSearch.addEventListener('click', isHide);
+        </script>
     </body>
 </html>

@@ -120,7 +120,7 @@
                         <div class="sidebar__sale1">
                             <div class="sidebar__img">
                                 <a href="#">
-                                    <img src="./assets/images/products/img02.jpg" alt="ghe dep">
+                                    <img src="assets/image02.jpg" alt="ghe dep">
                                 </a>
                             </div>
                             <div class="sidebar__text">
@@ -148,7 +148,7 @@
                         <div class="sidebar__sale1">
                             <div class="sidebar__img">
                                 <a href="#">
-                                    <img src="./assets/images/products/img15.jpg" alt="ghe dep">
+                                    <img src="assets/img15.jpg" alt="ghe dep">
                                 </a>
                             </div>
                             <div class="sidebar__text">
@@ -162,7 +162,7 @@
                         <div class="sidebar__sale1">
                             <div class="sidebar__img">
                                 <a href="#">
-                                    <img src="./assets/images/products/img16.jpg" alt="ghe dep">
+                                    <img src="assets/img16.jpg" alt="ghe dep">
                                 </a>
                             </div>
                             <div class="sidebar__text">
@@ -190,7 +190,7 @@
                         <div class="sidebar__sale1">
                             <div class="sidebar__img">
                                 <a href="#">
-                                    <img src="./assets/images/products/img12.jpg" alt="ghe dep">
+                                    <img src="assets/img12.jpg" alt="ghe dep">
                                 </a>
                             </div>
                             <div class="sidebar__text">
@@ -258,11 +258,11 @@
                     </div>
                     <!--end header-->
                     <!--begin bot-->
-                    <div class="right__bot">
+                    <div style='justify-content: space-between; margin-bottom: 20px' class="right__bot">
                         <c:forEach items = "${requestScope.dataP}" var ="o">
                             <div class="col">
                                 <div class="product__item active l-12 m-12 c-12" >
-                                    <div class="product__item-img">
+                                    <div style='margin-left: 0px;' class="product__item-img">
                                         <img src="${o.image}" alt="lounge chair">
                                     </div>
                                     <div class="product__item-body">
@@ -279,10 +279,10 @@
                                             <h3><i class="fas fa-euro-sign"></i>${o.price}</h3>
                                         </div>
                                         <div class="product__item-links">
-                                            <ul>
-                                                <li><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
-                                                <li><a href="#" class="product__link-item" ><i class="far fa-heart"></i></a></li>
-                                                <li><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
+                                            <ul style='background-color: white;'>
+                                                <li style='width: auto;padding: 0;'><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
+                                                <li style='width: auto;padding: 0;'><a href="#" class="product__link-item" ><i class="far fa-heart"></i></a></li>
+                                                <li style='width: auto;padding: 0;'><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
