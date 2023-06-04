@@ -18,6 +18,8 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadEditProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/login.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/category.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/filterProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/user.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/categoryDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/signup.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteUser.java</file>
@@ -31,6 +33,7 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/signup.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadAddProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/addProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/userDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/product.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/category.java</file>

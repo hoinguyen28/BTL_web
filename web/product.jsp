@@ -18,6 +18,23 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">       
+        <style>
+            .filter__flex {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                display: block;
+            }
+
+            .filter__select {
+                width: 100%;
+                height: 37px;
+                border-radius: 20px;
+                padding-left: 10px;
+                outline: none;
+                margin-bottom: 30px;
+            }
+        </style>
     </head>
     <body>
         <main>
@@ -47,73 +64,47 @@
             <!--begin sidebar-->
             <div class="container">
                 <div class="sidebar">
-                    <!--begin filter-->
-                    <!--                    <div class="sidebar__filter">
-                                            <h2>filter</h2>
-                                            <p>Filter by Brands</p>
-                                            <ul>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Casali</label>
-                                                    <span class="sidebar__number">2</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Decar</label>
-                                                    <span class="sidebar__number">12</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Fanitini</label>
-                                                    <span class="sidebar__number">4</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">flamentstyle</label>
-                                                    <span class="sidebar__number">4</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Heerenhuis</label>
-                                                    <span class="sidebar__number">2</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Hoffmann</label>
-                                                    <span class="sidebar__number">10</span>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <label for="#">Italfloor</label>
-                                                    <span class="sidebar__number">3</span>
-                                                </li>
-                                            </ul>
-                                            <p>Filter by Price</p>
-                                            <div class="sidebarm__oney">
-                                                <div class="sidebar__boder">
-                                                    <span class="sidebar__dot"></span>
-                                                    <span class="sidebar__dot dot2"></span>
-                                                </div>
-                    
-                                                <span class="sidebar__price">price &nbsp; $10 &nbsp; - &nbsp; $599</span>
-                                                <a class="sidebar__button" href="#">filter</a>
-                                            </div>
-                                        </div>-->
-                    <!--end filter-->
-                    <!--begin CATEGORIES-->
                     <div class="sidebar__categories">
                         <h2 style='font-size: 30px;margin-bottom: 20px'>CATEGORIES</h2>
                         <ul>
                             <c:forEach items = "${dataC}" var = "o">
                                 <li style='margin: 0 0 18px;'>
-                                <a href="category?cid=${o.cid} ">
-                                    <span class="sidebar__name">${o.cname}</span>
-                                </a>
-                            </li>
-                             </c:forEach>
+                                    <a href="category?cid=${o.cid} ">
+                                        <span class="sidebar__name">${o.cname}</span>
+                                    </a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <!--end CATEGORIES-->
+                    <div class="sidebar__categories">
+                        <h2 style='font-size: 30px;margin-bottom: 20px'>FITER</h2>
+                        <div class="filter">
+                            <form id="filterProduct" action="filterProduct" method="post">
+                                <h5 class="filter__name">Price :</h5>
+                                <div class="filter__flex">
+                                    <label for="productPrice">FROM :</label>
+                                    <input type="text" id="productPrice" name="priceFrom">
+                                </div>
+                                <div class="filter__flex">
+                                    <label for="productName">TO :</label>
+                                    <input type="text" id="productName" name="priceTo">
+                                </div>
+
+                                <h5 style="margin-bottom: 10px;" class="filter__name">COLOR :</h5>
+                                <select name="color" class="filter__select">
+                                    <option value="all">All</option>
+                                    <option value="green">GREEN</option>
+                                    <option value="black">BLACK</option>
+                                    <option value="red">RED</option>
+                                    <option value="gray">GRAY</option>
+                                    <option value="pink">PINK</option>
+                                    <option value="blue">BLUE</option>
+                                </select>
+                                <input style='cursor: pointer;' type="submit" class="btn" value="Filter">
+                            </form>
+                        </div>
+                    </div>
                     <!--begin hotsale-->
                     <div class="sidebar__sale">
                         <h2>HOT SALE</h2>
@@ -261,9 +252,11 @@
                     <div style='justify-content: space-between; margin-bottom: 20px' class="right__bot">
                         <c:forEach items = "${requestScope.dataP}" var ="o">
                             <div class="col">
-                                <div class="product__item active l-12 m-12 c-12" >
+                                <div style="cursor: pointer" class="product__item active l-12 m-12 c-12" >
                                     <div style='margin-left: 0px;' class="product__item-img">
-                                        <img src="${o.image}" alt="lounge chair">
+                                        <a style='cursor: pointer;' href="detailProduct?pid=${o.id}">
+                                            <img src="${o.image}" alt="lounge chair">
+                                        </a>
                                     </div>
                                     <div class="product__item-body">
                                         <div class="product__item-rating">
@@ -276,7 +269,7 @@
                                             <p>${o.name}</p>
                                         </div>
                                         <div class="product__item-price">
-                                            <h3><i class="fas fa-euro-sign"></i>${o.price}</h3>
+                                            <h3></i>${o.price} $</h3>
                                         </div>
                                         <div class="product__item-links">
                                             <ul style='background-color: white;'>
