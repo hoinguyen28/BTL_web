@@ -14,23 +14,23 @@ public class user {
     private String userName;
     private String password;
     private String name;
+    private String address;
     private String email;
     private String phone;
     private int isAdmin;
-    private String address;
 
     public user() {
     }
 
-    public user(int id, String userName, String password, String name, String email, String phone, int isAdmin, String address) {
+    public user(int id, String userName, String password, String name, String address, String email, String phone, int isAdmin) {
         this.id = id;
         this.userName = userName;
         this.password = password;
         this.name = name;
+        this.address = address;
         this.email = email;
         this.phone = phone;
         this.isAdmin = isAdmin;
-        this.address = address;
     }
 
     public int getId() {
@@ -65,6 +65,14 @@ public class user {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -89,12 +97,5 @@ public class user {
         this.isAdmin = isAdmin;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    
+   
 }

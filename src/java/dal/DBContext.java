@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class DBContext {
     public static Connection getConnection(){
-        String url= "jdbc:mySQL://localhost:3306/btl";
+        String url= "jdbc:mySQL://localhost:3306/btll";
         String username = "root";
         String password = "";
         try {
