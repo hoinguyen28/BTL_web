@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/product.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/addProduct.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/managerProduct.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/addUser.java</file>
@@ -35,6 +34,7 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/commentDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/AddReviewServerlet.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/purchase.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/process.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/order.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/login.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteProduct.java</file>

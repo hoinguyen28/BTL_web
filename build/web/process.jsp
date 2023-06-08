@@ -22,34 +22,32 @@
 
     </head>
     <body>
+        <jsp:include page="header.jsp"/>
         <div class="app">
-            <jsp:include page="Menu1.jsp"></jsp:include>
+            <div  class="homepage">
+                <div class="nav_homepage">
+                    <ul class="navhome">
+                        <li><a href="#" target="_parent" rel="noopener noreferrer">Tài Khoản Của Tôi</a></li>
+                        <li><a href="/btlWeb_1/pur" target="_parent" rel="noopener noreferrer">Đơn Hàng</a></li>
+                        <li><a href="#" target="_parent" rel="noopener noreferrer">Thông báo</a></li>
+                    </ul>
+                </div>
 
-
-                <div  class="homepage">
-                    <div class="nav_homepage">
-                        <ul class="navhome">
-                            <li><a href="#" target="_parent" rel="noopener noreferrer">Tài Khoản Của Tôi</a></li>
-                            <li><a href="/btlWeb_1/pur" target="_parent" rel="noopener noreferrer">Đơn Hàng</a></li>
-                            <li><a href="#" target="_parent" rel="noopener noreferrer">Thông báo</a></li>
-                        </ul>
-                    </div>
-
+                <div class="content_homepage">
                     <div class="content_homepage">
-                        <div class="content_homepage">
-                            <div class="nav_content">
-                                <ul>                    
-                                    <li class="js_selectNav selected" ><a href="/btlWeb_1/pur?page=0">Tất Cả</a></li>
-                                    <li class="js_selectNav" ><a href="/btlWeb_1/pur?page=1">Chờ Thanh Toán</a></li>
-                                    <li class="js_selectNav"><a href="/btlWeb_1/pur?page=2">Vận Chuyển</a></li>
-                                    <li class="js_selectNav"><a href="/btlWeb_1/pur?page=3">Đang Giao</a></li>
-                                    <li class="js_selectNav"><a href="/btlWeb_1/pur?page=4">Hoàn Thành</a></li>
-                                    <li class="js_selectNav"><a href="/btlWeb_1/pur?page=5">Đã Hủy</a></li>              
-                                </ul>
-                            </div>
+                        <div class="nav_content">
+                            <ul>                    
+                                <li class="js_selectNav selected" ><a href="/btlWeb_1/pur?page=0">Tất Cả</a></li>
+                                <li class="js_selectNav" ><a href="/btlWeb_1/pur?page=1">Chờ Thanh Toán</a></li>
+                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=2">Vận Chuyển</a></li>
+                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=3">Đang Giao</a></li>
+                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=4">Hoàn Thành</a></li>
+                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=5">Đã Hủy</a></li>              
+                            </ul>
+                        </div>
 
-                            <div class="content">
-                                <div class="js_content active">
+                        <div class="content">
+                            <div class="js_content active">
                                 <c:set var="listProduct" value="${requestScope.dataProduct}" />
                                 <c:set var="listOrder" value="${requestScope.dataOrder}" />
 
@@ -69,7 +67,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <c:forEach var="p" items="${listProduct}" varStatus="status">
-                                            <div product_link>
+                                            <div class="product_link">
                                                 <a rel="stylesheet" href="/btlWeb_1/comment?productId=${p.getId()}">
                                                     <div class="content_product">
                                                         <div class="icon_pro">
@@ -155,12 +153,8 @@
             </div>
 
         </div>
-
-        <jsp:include page="Footer.jsp"></jsp:include>
-
-    </div>
-
-    <script src="./js/main.js"></script>
-    <script src="js/purchase.js"></script>
-</body>
+        <jsp:include page="footer.jsp"/>
+        <script src="./js/main.js"></script>
+        <script src="js/purchase.js"></script>
+    </body>
 </html>

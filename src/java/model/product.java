@@ -9,25 +9,26 @@ package model;
  * @author Admin
  */
 public class product {
+
     private int id;
     private String name;
-    private int catId;
+    private int cid;
     private String image;
-    private String des;
-    private int qty;
     private Double price;
+    private int qty;
+    private String des;
 
     public product() {
     }
 
-    public product(int id, String name, int catId, String image, String des, int qty, Double price) {
+    public product(int id, String name, int cid, String image, Double price, int qty, String des) {
         this.id = id;
         this.name = name;
-        this.catId = catId;
+        this.cid = cid;
         this.image = image;
-        this.des = des;
-        this.qty = qty;
         this.price = price;
+        this.qty = qty;
+        this.des = des;
     }
 
     public int getId() {
@@ -46,12 +47,12 @@ public class product {
         this.name = name;
     }
 
-    public int getCatId() {
-        return catId;
+    public int getCid() {
+        return cid;
     }
 
-    public void setCatId(int catId) {
-        this.catId = catId;
+    public void setCid(int cid) {
+        this.cid = cid;
     }
 
     public String getImage() {
@@ -62,12 +63,12 @@ public class product {
         this.image = image;
     }
 
-    public String getDes() {
-        return des;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setDes(String des) {
-        this.des = des;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public int getQty() {
@@ -78,14 +79,13 @@ public class product {
         this.qty = qty;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getDes() {
+        return des;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setDes(String des) {
+        this.des = des;
     }
     
-
     
 }

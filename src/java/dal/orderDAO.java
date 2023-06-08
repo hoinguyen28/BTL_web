@@ -25,7 +25,7 @@ public class orderDAO {
 
     public List<order> selectAll(int userId) {
         List<order> list = new ArrayList<>();
-        String query = "SELECT * FROM btl.order where user_id = ?;";
+        String query = "SELECT * FROM btlweb.order where user_id = ?;";
         try {
             Connection conn = JDBC.getConnection();
             ps = conn.prepareStatement(query);
@@ -47,7 +47,7 @@ public class orderDAO {
 
     public List<order> selectByStatus(int userId, String page) {
         List<order> list = new ArrayList<>();
-        String query = "SELECT * FROM btl.order where user_id = ? and status = ?;";
+        String query = "SELECT * FROM btlweb.order where user_id = ? and status = ?;";
         try {
             Connection conn = JDBC.getConnection();
             ps = conn.prepareStatement(query);
@@ -70,7 +70,7 @@ public class orderDAO {
 
     public List<product> getAllProductByOrder(int userId) {
         List<product> list = new ArrayList<>();
-        String query = "SELECT Product.* FROM btl.Order\n"
+        String query = "SELECT Product.* FROM btlweb.Order\n"
                 + "JOIN Product ON btl.Order.product_id = Product.id\n"
                 + "WHERE btl.Order.user_id = ? ;";
         try {
@@ -79,13 +79,13 @@ public class orderDAO {
             ps.setInt(1, userId);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new product(rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getInt("cid"),
-                        rs.getString("image"),
-                        rs.getString("des"),
-                        rs.getInt("qty"),
-                        rs.getDouble("price")));
+                list.add(new product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDouble(5),
+                        rs.getInt(6),
+                        rs.getString(7)));
             }
             return list;
         } catch (SQLException e) {
@@ -108,13 +108,13 @@ public class orderDAO {
             ps.setString(2, status);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new product(rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getInt("cid"),
-                        rs.getString("image"),
-                        rs.getString("des"),
-                        rs.getInt("qty"),
-                        rs.getDouble("price")));
+                list.add(new product(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4),
+                        rs.getDouble(5),
+                        rs.getInt(6),
+                        rs.getString(7)));
 
             }
             return list;

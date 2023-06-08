@@ -35,7 +35,7 @@
     <body>
         <div id="login" class="modal">
             <div style='width: 30%;' class="modal-content"> 
-                <h6 style='text-align: center; margin-bottom: 30px; font-size: 25px;' class="login__account-title">SIGN UP</h6>
+                <h6 style='text-align: center; margin-bottom: 30px; font-size: 25px;' class="login__account-title">LOG IN</h6>
                 <p style='margin-bottom: 18px;' class="login__account-desc">Welcome back! Sign in to Your Account</p>
                 <c:set var = "cookie" value="${pageContext.request.cookies}"/>
                 <p style='color: red; font-size: 20px; margin-bottom: 18px' class="login__account-desc">${messError}</p>

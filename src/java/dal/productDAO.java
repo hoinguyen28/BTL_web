@@ -88,9 +88,9 @@ public class productDAO {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDouble(5),
                         rs.getInt(6),
-                        rs.getDouble(7)));
+                        rs.getString(7)));
             }
         } catch (SQLException e) {
         }
@@ -112,9 +112,9 @@ public class productDAO {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDouble(5),
                         rs.getInt(6),
-                        rs.getDouble(7)));
+                        rs.getString(7)));
             }
         } catch (SQLException e) {
         }
@@ -138,16 +138,16 @@ public class productDAO {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDouble(5),
                         rs.getInt(6),
-                        rs.getDouble(7)));
+                        rs.getString(7)));
             }
         } catch (SQLException e) {
         }
         return list;
     }
     
-    public List<product> filterByKey(Double priceTo, Double priceForm, String color) {
+    public List<product> filterByKey(Double priceFrom, Double priceTo,  String color) {
 
         List<product> list = new ArrayList<>();
         String query = "SELECT * FROM product\n"
@@ -157,11 +157,11 @@ public class productDAO {
             if (color != null && !color.equals("")) {
                 query += " and des like '%"+color+"%'";
             }
-            if (priceForm != null) {
-                query += "and price >= "+priceForm;
+            if (priceFrom != null) {
+                query += " and price >= "+priceFrom;
             }
             if (priceTo != null) {
-                query += "and price <= "+priceTo;
+                query += " and price <= "+priceTo;
             }
             
             ps = conn.prepareStatement(query);
@@ -171,15 +171,15 @@ public class productDAO {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDouble(5),
                         rs.getInt(6),
-                        rs.getDouble(7)));
+                        rs.getString(7)));
             }
         } catch (SQLException e) {
         }
         return list;
     }
-
+    
     public product getProductById(int id) {
         String query = "SELECT * FROM product \n"
                 + "WHERE id = ?";
@@ -193,9 +193,9 @@ public class productDAO {
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getString(4),
-                        rs.getString(5),
+                        rs.getDouble(5),
                         rs.getInt(6),
-                        rs.getDouble(7));
+                        rs.getString(7));
             }
 
         } catch (Exception e) {
