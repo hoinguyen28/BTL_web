@@ -21,13 +21,13 @@
     </head>
     <body>
         <div class="app">
-            <jsp:include page="Menu.jsp"/>
+            <jsp:include page="header.jsp"/>
             <c:set var="p" value="${product}" />
             <div style="background-color: #F6F6F6" class="detail">
                 <div style="" class="container"> 
                     <div class="detail__wrap">
                         <div class="detail__img">
-                            <img style='height: auto;
+                            <img class="img__pur" style='height: auto;
                                  width: 100%;' src="<c:out value="${p.getImage()}" />">
                         </div>
                         <div class="detail__content">
@@ -39,13 +39,12 @@
 
                             <form action="">
                                 <div class="addProduct">
-                                    <div class="add_qty">
-                                        <label for="qty">Quantity</label>
-                                        <input type="number" id="qty" name="Qty" value="1">
-                                    </div>
-
                                     <div class="add_button">
-                                        <input type="button" class="btn" data-dismiss="modal" value="Add to card">
+                                        <form name="f" action="" method="post">
+                                            <label style="font-size: 12px" for="qty">Quantity:</label>
+                                            <input type="number" id="num" name="Qty" value="1">
+                                            <input type="button" class="btn" data-dismiss="modal" onclick="buy(${detail.id})" value="Add to cart">
+                                        </form>
                                     </div>
                                 </div>
                             </form>
@@ -57,22 +56,22 @@
 
             <div class="comment">
                 <h2>Đánh Giá Sản Phẩm</h2>
-                
+
                 <form action="addreview">
                     <div class="review">
                         <div class="add_review">
                             <input type="hidden" name="productId" value="${p.getId()}">
-                            
+
                             <label for="message">Review</label>
                             <textarea id="message" name="message" rows="6" cols="200"></textarea>
                         </div>
-                        
+
                         <div class="sub_review">
                             <input type="submit" value="ADD REVIEW">
                         </div>
                     </div>
                 </form>
-                
+
                 <c:set var="listComment" value="${requestScope.listComment}" />
                 <c:set var="listUser" value="${requestScope.listUser}" />
                 <c:forEach var="i" items="${listComment}" varStatus="status">
@@ -87,9 +86,15 @@
                     </div>
                 </c:forEach>
             </div>
-            <jsp:include page="Footer.jsp"/>
+            <jsp:include page="footer.jsp"/>
         </div>
-
         <script src="js/main.js"></script>
+        <script type="text/javascript">
+                                                function buy(id) {
+                                                    var m = document.f.num.value;
+                                                    document.f.action = "buy?id=" + id + "&num=" + m;
+                                                    document.f.submit();
+                                                }
+        </script>
     </body>
 </html>

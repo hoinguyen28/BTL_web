@@ -4,8 +4,8 @@
  */
 package controller;
 
+
 import dal.orderDAO;
-import dal.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import model.order;
@@ -73,7 +72,7 @@ public class purchaseServerlet extends HttpServlet {
         if (page == null) {
             page = "0";
         }
-        user u = new user(1, "kien", "kien1234", "nguyen trung kien", "HN", "kieen@gmail.com", "0369270572", 0);
+        user u = (user) session.getAttribute("acc");
         orderDAO o = new orderDAO();
         List<product> listProduct = new ArrayList<>();
         List<order> listOrder = new ArrayList<>(); 
@@ -86,10 +85,9 @@ public class purchaseServerlet extends HttpServlet {
             listProduct = o.getProductByOrder(u.getId(), page);
             listOrder = o.selectByStatus(u.getId(), page);
         }
-        int pageInt = Integer.parseInt(page);
         
-        request.setAttribute("user", u);
-        
+        int pageInt = Integer.parseInt(page);       
+        request.setAttribute("user", u);        
         request.setAttribute("dataProduct", listProduct);
         request.setAttribute("dataOrder", listOrder);
         request.setAttribute("index", pageInt);

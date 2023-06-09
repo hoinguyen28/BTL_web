@@ -130,7 +130,7 @@
                             </li>
                             <!-- begin cart form -->
                             <li class="cart-list modal__header-click">
-                                <a href="#">
+                                <a href="show">
                                     <i  class="fas fa-shopping-bag" >
                                         <span class="num">3</span>
                                     </i>
@@ -183,11 +183,7 @@
                             </li>
                             <!-- end cart form -->
                             <!-- begin form login -->
-                            <li class="login-click">
-                                <a   href="#">
-                                    <i class="fas fa-bars"></i>
-                                </a>
-                            </li>
+                            
                             <!-- end form login -->
                         </ul>
                     </div>

@@ -4,7 +4,7 @@
  */
 package dal;
 
-import database.JDBC;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,9 +25,9 @@ public class orderDAO {
 
     public List<order> selectAll(int userId) {
         List<order> list = new ArrayList<>();
-        String query = "SELECT * FROM btlweb.order where user_id = ?;";
+        String query = "SELECT * FROM `order` where user_id = ?;";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             rs = ps.executeQuery();
@@ -47,9 +47,9 @@ public class orderDAO {
 
     public List<order> selectByStatus(int userId, String page) {
         List<order> list = new ArrayList<>();
-        String query = "SELECT * FROM btlweb.order where user_id = ? and status = ?;";
+        String query = "SELECT * FROM `order` where user_id = ? and status = ?;";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             ps.setString(2, page);
@@ -70,11 +70,11 @@ public class orderDAO {
 
     public List<product> getAllProductByOrder(int userId) {
         List<product> list = new ArrayList<>();
-        String query = "SELECT Product.* FROM btlweb.Order\n"
-                + "JOIN Product ON btl.Order.product_id = Product.id\n"
-                + "WHERE btl.Order.user_id = ? ;";
+        String query = "SELECT Product.* FROM `Order`\n"
+                + "JOIN Product ON `Order`.product_id = Product.id\n"
+                + "WHERE `Order`.user_id = ? ;";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             rs = ps.executeQuery();
@@ -102,7 +102,7 @@ public class orderDAO {
                 + "WHERE `Order`.user_id = ? AND `Order`.status = ?\n"
                 + "GROUP BY Product.id, `Order`.status;";
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             ps.setString(2, status);

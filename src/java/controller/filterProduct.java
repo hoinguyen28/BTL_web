@@ -39,11 +39,11 @@ public class filterProduct extends HttpServlet {
         String color1 = request.getParameter("color");
         String color = ((color1.equals("all")) ? null : color1);
 
-        Double priceFrom4 = ((priceFrom1 == null) || (priceFrom1.equals(""))) ? null : Double.parseDouble(priceFrom1);
-        Double priceFrom3 = ((priceTo1 == null) || (priceTo1.equals(""))) ? null : Double.parseDouble(priceTo1);
+        Double priceFrom = ((priceFrom1 == null) || (priceFrom1.equals(""))) ? null : Double.parseDouble(priceFrom1);
+        Double priceTo = ((priceTo1 == null) || (priceTo1.equals(""))) ? null : Double.parseDouble(priceTo1);
 
         productDAO pDAO = new productDAO();
-        List<model.product> listP = pDAO.filterByKey(priceFrom4, priceFrom3, color);
+        List<model.product> listP = pDAO.filterByKey(priceFrom, priceTo, color);
         categoryDAO cDAO = new categoryDAO();
         List<model.category> listC = cDAO.selectAll();
 

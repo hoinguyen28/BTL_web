@@ -78,7 +78,10 @@
                         <div style="text-align: center; margin-bottom: 30px;" class="product__item-price">
                             <p class="detail__price">${detail.price}$</p>
                         </div>
-                        <input type="button" class="btn" data-dismiss="modal" value="Add to card">
+                        <form name="f" action="" method="post">
+                            <input type="text" name="num" value="1">
+                            <input type="button" class="btn" data-dismiss="modal" onclick="buy(${detail.id})" value="Add to cart">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -86,3 +89,10 @@
         <jsp:include page="footer.jsp"/>
     </body>
 </html>
+<script type="text/javascript">
+    function buy(id) {
+        var m = document.f.num.value;
+        document.f.action = "buy?id=" + id + "&num=" + m;
+        document.f.submit();
+    }
+</script>

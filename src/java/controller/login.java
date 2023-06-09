@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.user;
+import util.MaHoa;
 
 /**
  *
@@ -70,7 +71,7 @@ public class login extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String rem = request.getParameter("rem");
-
+//   password = MaHoa.toSHA1(password);
         userDAO uDAO = new userDAO();
         user a = uDAO.login(userName, password);
 
@@ -91,7 +92,7 @@ public class login extends HttpServlet {
         response.addCookie(cUser);
         response.addCookie(cPass);
         response.addCookie(cRem);
-
+     
         if (a == null) {
             request.setAttribute("messError", "Wrong username or password !!");
             request.getRequestDispatcher("login.jsp").forward(request, response);

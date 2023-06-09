@@ -4,7 +4,6 @@
  */
 package dal;
 
-import database.JDBC;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,7 +29,7 @@ public class commentDAO {
                 + "ORDER BY id DESC;";
 
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, productId);
             rs = ps.executeQuery();
@@ -57,7 +56,7 @@ public class commentDAO {
                 + "ORDER BY c.id DESC;";
 
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, productId);
             rs = ps.executeQuery();
@@ -80,10 +79,10 @@ public class commentDAO {
     }
 
     public void AddReview(int userId, int productId, String comment){
-        String query = "INSERT INTO `btl`.`comment` (`user_id`, `product_id`, `comment_text`) VALUES (?, ?, ?);";
+        String query = "INSERT INTO `comment` (`user_id`, `product_id`, `comment_text`) VALUES (?, ?, ?);";
         
         try {
-            Connection conn = JDBC.getConnection();
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, userId);
             ps.setInt(2, productId);

@@ -34,122 +34,121 @@
                 </div>
 
                 <div class="content_homepage">
-                    <div class="content_homepage">
-                        <div class="nav_content">
-                            <ul>                    
-                                <li class="js_selectNav selected" ><a href="/btlWeb_1/pur?page=0">Tất Cả</a></li>
-                                <li class="js_selectNav" ><a href="/btlWeb_1/pur?page=1">Chờ Thanh Toán</a></li>
-                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=2">Vận Chuyển</a></li>
-                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=3">Đang Giao</a></li>
-                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=4">Hoàn Thành</a></li>
-                                <li class="js_selectNav"><a href="/btlWeb_1/pur?page=5">Đã Hủy</a></li>              
-                            </ul>
-                        </div>
+                    <div class="nav_content">
+                        <ul>                    
+                            <li class="js_selectNav selected" ><a href="/btlWeb_1/pur?page=0">Tất Cả</a></li>
+                            <li class="js_selectNav" ><a href="/btlWeb_1/pur?page=1">Chờ Thanh Toán</a></li>
+                            <li class="js_selectNav"><a href="/btlWeb_1/pur?page=2">Vận Chuyển</a></li>
+                            <li class="js_selectNav"><a href="/btlWeb_1/pur?page=3">Đang Giao</a></li>
+                            <li class="js_selectNav"><a href="/btlWeb_1/pur?page=4">Hoàn Thành</a></li>
+                            <li class="js_selectNav"><a href="/btlWeb_1/pur?page=5">Đã Hủy</a></li>              
+                        </ul>
+                    </div>
 
-                        <div class="content">
-                            <div class="js_content active">
-                                <c:set var="listProduct" value="${requestScope.dataProduct}" />
-                                <c:set var="listOrder" value="${requestScope.dataOrder}" />
+                    <div class="content">
+                        <div class="js_content active">
+                            <c:set var="listProduct" value="${requestScope.dataProduct}" />
+                            <c:set var="listOrder" value="${requestScope.dataOrder}" />
 
-                                <c:choose>
-                                    <c:when test="${empty listProduct}">
-                                        <div  style="height: 600px">
-                                            <div class="container_icon">
-                                                <div style="width: 150px" class="icon_order">
-                                                    <img src="assets/icon/order.jfif" alt="">
-                                                </div>
+                            <c:choose>
+                                <c:when test="${empty listProduct}">
+                                    <div  style="height: 600px">
+                                        <div class="container_icon">
+                                            <div style="width: 150px" class="icon_order">
+                                                <img src="assets/order.png" alt="">
+                                            </div>
 
-                                                <div class="icon_order_content">
-                                                    <p>Chưa có đơn hàng</p>
-                                                </div>
+                                            <div class="icon_order_content">
+                                                <p>Chưa có đơn hàng</p>
                                             </div>
                                         </div>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <c:forEach var="p" items="${listProduct}" varStatus="status">
-                                            <div class="product_link">
-                                                <a rel="stylesheet" href="/btlWeb_1/comment?productId=${p.getId()}">
-                                                    <div class="content_product">
-                                                        <div class="icon_pro">
-                                                            <img src="<c:out value="${p.getImage()}" />" alt="">
-                                                        </div>
-                                                        <div class="icon_content">
-                                                            <p class="product_name" style="font-weight: 600;"><c:out value="${p.getName()}" /></p>
-                                                            <p>x<c:out value="${listOrder[status.index].getAmount()}" /></p>
-                                                            <p>$ <c:out value="${p.getPrice()}" /></p>
-                                                            <c:set var="price" value="${listOrder[status.index].getAmount() * p.getPrice()}" />
-                                                            <p class="icon_price" style="color: red; font-size: 20px;">Thành Tiền: $ <c:out value="${price}" /></p>
-                                                        </div>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="p" items="${listProduct}" varStatus="status">
+                                        <div class="product_link">
+                                            <a rel="stylesheet" href="/btlWeb_1/comment?productId=${p.getId()}">
+                                                <div class="content_product">
+                                                    <div class="icon_pro">
+                                                        <img class="img__pur" src="<c:out value="${p.getImage()}" />" alt="">
                                                     </div>
-                                                </a>
-                                                <form action="MuaServerlet">
-                                                    <input type="hidden" name="productId" value="${p.getId()}" />
-                                                    <div class="sellandcall">
-                                                        <c:choose>
-                                                            <c:when test="${requestScope.index > 0 and requestScope.index < 3}">
-                                                                <div style="width: 634px;">
-                                                                    <c:choose>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '1'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p> 
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '2'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Vận Chuyển</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '3'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '4'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đã Nhận Được Hàng</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '5'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đã Hủy Đơn Hàng</p>
-                                                                        </c:when>
-                                                                    </c:choose>
-                                                                </div>
-                                                                <div class="clickBut">
-                                                                    <button class="clickP" name="action" value="MuaLai">Hủy Đơn</button>
-                                                                </div>
-                                                            </c:when>
+                                                    <div class="icon_content">
+                                                        <p class="product_name" style="font-weight: 600;"><c:out value="${p.getName()}" /></p>
+                                                        <p>x<c:out value="${listOrder[status.index].getAmount()}" /></p>
+                                                        <p>$ <c:out value="${p.getPrice()}" /></p>
+                                                        <c:set var="price" value="${listOrder[status.index].getAmount() * p.getPrice()}" />
+                                                        <p class="icon_price" style="color: red; font-size: 20px;">Thành Tiền: $ <c:out value="${price}" /></p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <form action="MuaServerlet">
+                                                <input type="hidden" name="productId" value="${p.getId()}" />
+                                                <div class="sellandcall">
+                                                    <c:choose>
+                                                        <c:when test="${requestScope.index > 0 and requestScope.index < 3}">
+                                                            <div style="width: 634px;">
+                                                                <c:choose>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '1'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p> 
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '2'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Vận Chuyển</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '3'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '4'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đã Nhận Được Hàng</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '5'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đã Hủy Đơn Hàng</p>
+                                                                    </c:when>
+                                                                </c:choose>
+                                                            </div>
+                                                            <div class="clickBut">
+                                                                <button class="clickP" name="action" value="MuaLai">Hủy Đơn</button>
+                                                            </div>
+                                                        </c:when>
 
-                                                            <c:otherwise>
-                                                                <div style="width: 800px;">
-                                                                    <c:choose>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '1'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p> 
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '2'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Vận Chuyển</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '3'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '4'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đã Nhận Được Hàng</p>
-                                                                        </c:when>
-                                                                        <c:when test="${listOrder[status.index].getStatus() == '5'}">
-                                                                            <p style="margin: 20px 0 0 10px">Đã Hủy Đơn Hàng</p>
-                                                                        </c:when>
-                                                                    </c:choose>
-                                                                </div>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                        <div class="clickBut">
-                                                            <button class="clickP" name="action" value="MuaLai">Mua Lại</button>
-                                                        </div>
-                                                        <div class="clickBut">
-                                                            <button class="clickP" name="action" value="LienHe">Liên Hệ Người Bán</button>
-                                                        </div>
+                                                        <c:otherwise>
+                                                            <div style="width: 800px;">
+                                                                <c:choose>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '1'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p> 
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '2'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Vận Chuyển</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '3'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đang Chờ Thanh Toán</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '4'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đã Nhận Được Hàng</p>
+                                                                    </c:when>
+                                                                    <c:when test="${listOrder[status.index].getStatus() == '5'}">
+                                                                        <p style="margin: 20px 0 0 10px">Đã Hủy Đơn Hàng</p>
+                                                                    </c:when>
+                                                                </c:choose>
+                                                            </div>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    <div class="clickBut">
+                                                        <button class="clickP" name="action" value="MuaLai">Mua Lại</button>
                                                     </div>
-                                                </form>
-                                                <div class="block_distance"></div>
-                                            </div>
-                                        </c:forEach>
-                                    </c:otherwise>
-                                </c:choose>
-                            </div>
+                                                    <div class="clickBut">
+                                                        <button class="clickP" name="action" value="LienHe">Liên Hệ Người Bán</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div class="block_distance"></div>
+                                        </div>
+                                    </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>

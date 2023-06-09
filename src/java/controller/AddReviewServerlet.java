@@ -61,7 +61,7 @@ public class AddReviewServerlet extends HttpServlet {
         HttpSession session = request.getSession();
         commentDAO cd = new commentDAO();
         
-        user u = new user(1, "kien", "kien1234", "nguyen trung kien", "HN", "kieen@gmail.com", "0369270572", 0);
+        user u = (user) session.getAttribute("acc");
         
         String productId = request.getParameter("productId");
         String message = request.getParameter("message");    

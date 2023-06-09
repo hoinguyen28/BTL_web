@@ -52,8 +52,8 @@
                     <a href="home">         
                         <input style='margin-top: 15px; cursor: pointer;' type="button" class="btn" data-dismiss="modal" value="Cancel">
                     </a>
-                    <input style='cursor: pointer;' type="submit" class="btn" value="Login">
-                    <div class="signup_link">Not a member? <a href="signup.jsp">Signup</a></div>
+                    <input style='cursor: pointer;' type="submit" class="btn" value="Sign in">
+                    <div class="signup_link">Not a member? <a href="signup.jsp">Sign up</a></div>
                 </form>
             </div>
         </div>

@@ -105,12 +105,23 @@ public class userDAO {
     }
 
     public void delete(String uid) {
-        String query = "DELETE FROM user \n"
+        String query = "DELETE FROM `card` \n"
+                + "WHERE user_id = ?;\n"
+                + "DELETE FROM `order`\n"
+                + "WHERE user_id = ?;\n"
+                + "DELETE FROM `comment`\n"
+                + "WHERE user_id = ?;\n"
+                + "DELETE FROM `sold`\n"
+                + "WHERE user_id = ?;\n"
+                + "DELETE FROM user \n"
                 + "WHERE id = ?";
         try {
             Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, uid);
+            ps.setString(2, uid);
+            ps.setString(3, uid);
+            ps.setString(4, uid);
             ps.executeUpdate();
 
         } catch (SQLException e) {

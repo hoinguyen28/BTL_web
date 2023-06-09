@@ -254,7 +254,7 @@
                             <div class="col">
                                 <div style="cursor: pointer" class="product__item active l-12 m-12 c-12" >
                                     <div style='margin-left: 0px;' class="product__item-img">
-                                        <a style='cursor: pointer;' href="detailProduct?pid=${o.id}">
+                                        <a style='cursor: pointer;' href="comment?productId=${o.id}">
                                             <img src="${o.image}" alt="lounge chair">
                                         </a>
                                     </div>
