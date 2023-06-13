@@ -47,52 +47,12 @@ public class productDAO {
     }
 
     public void delete(int pid) {
-        String query = "DELETE FROM `cart` \n"
-                + "WHERE product_id = 10;\n"
-                + "\n"
-                + "DELETE FROM `order`\n"
-                + "WHERE product_id = 10; \n"
-                + "\n"
-                + "DELETE FROM `comment`\n"
-                + "WHERE product_id = 10;\n"
-                + "\n"
-                + "DELETE FROM `sold`\n"
-                + "WHERE product_id = 10;\n"
-                + "\n"
-                + "DELETE FROM `product`\n"
-                + "WHERE id = 10;";
+        String query = "DELETE FROM `product`\n"
+                + "WHERE id = ?;";
         try {
             Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setInt(1, pid);
-            ps.setInt(2, pid);
-            ps.setInt(3, pid);
-            ps.setInt(4, pid);
-            ps.setInt(5, pid);
-            ps.executeUpdate();
-
-        } catch (SQLException e) {
-        }
-    }
-
-    public void delete1() {
-        String query = "DELETE FROM `cart` \n"
-                + "WHERE product_id = 16;\n"
-                + "\n"
-                + "DELETE FROM `order`\n"
-                + "WHERE product_id = 16; \n"
-                + "\n"
-                + "DELETE FROM `comment`\n"
-                + "WHERE product_id = 16;\n"
-                + "\n"
-                + "DELETE FROM `sold`\n"
-                + "WHERE product_id = 16;\n"
-                + "\n"
-                + "DELETE FROM `product`\n"
-                + "WHERE id = 16;";
-        try {
-            Connection conn = DBContext.getConnection();
-            ps = conn.prepareStatement(query);
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -247,41 +207,17 @@ public class productDAO {
     }
     
     public void addOrder(user c, Cart1 cart) {
-        try {
-            //Thêm order
-            String sql = "insert into web.order(user_id, product_id, amount) values(?, ?, ?)";
-             Connection conn = DBContext.getConnection();
+       try {
+            String sql = "update web.product set qty=qty-? where id=?";
+            Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1,c.getId());
-            ps.setInt(2, 0);
-            ps.setDouble(3, cart.getTotalMoney());
-            ps.executeUpdate();
-            //Lấy id của order vừa thêm
-//            String sql1 = "SELECT id FROM btl.order ORDER BY id DESC limit 1";
-//            st1 = conn.prepareStatement(sql1);
-//            ResultSet rs = st1.executeQuery();
-//            if(rs.next()) {
-//                int oid = rs.getInt("id");
-//                for(Item i:cart.getItems()) {
-//                    String sql2 = "insert into btl.orderline values(?,?,?,?)";
-//                    st2 = conn.prepareStatement(sql2);
-//                    st2.setInt(1, oid);
-//                    st2.setInt(2, i.getProduct().getId());
-//                    st2.setInt(3, i.getQuantity());
-//                    st2.setDouble(4, i.getPrice());
-//                    st2.executeUpdate();
-//                }
-//            }   
-            String sql3 = "update web.product set qty=qty-? where id=?";
-            PreparedStatement st3 = conn.prepareStatement(sql3);
             for(Item i:cart.getItems()){
-                st3.setInt(1, i.getQuantity());
-                st3.setInt(2, i.getProduct().getId());
-                st3.executeUpdate();
+                ps.setInt(1, i.getQuantity());
+                ps.setInt(2, i.getProduct().getId());
+                ps.executeUpdate();
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
-    
 }

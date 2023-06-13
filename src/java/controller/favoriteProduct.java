@@ -4,7 +4,6 @@
  */
 package controller;
 
-import dal.userDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +12,13 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.user;
-import util.MaHoa;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class login extends HttpServlet {
+@WebServlet(name = "favoriteProduct", urlPatterns = {"/favoriteProduct"})
+public class favoriteProduct extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +31,39 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("favorite")) {
+                    txt += o.getValue();
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
+            }
+        }
+        String id = request.getParameter("pid");
 
+        if (txt.isEmpty()) {
+            txt = id;
+        } else {
+            int a =0;
+            String[] favo = txt.split("/");
+            for (int i = 0; i < favo.length; i++) {
+                if (favo[i].equals(id)) {
+                    a = 1;
+                    break;
+                }
+            }
+            if(a == 0) {
+                txt += "/" + id;
+            }
+        }
+        Cookie c = new Cookie("favorite", txt);
+        c.setMaxAge(60 * 60 * 24 * 5);
+        response.addCookie(c);
+        request.getRequestDispatcher("home").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,9 +78,7 @@ public class login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        request.getRequestDispatcher("login").forward(request, response);
-
+        processRequest(request, response);
     }
 
     /**
@@ -66,43 +92,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-        String rem = request.getParameter("rem");
-        String n = request.getParameter("password");
-
-        password = MaHoa.toSHA1(password);
-        userDAO uDAO = new userDAO();
-        user a = uDAO.login(userName, password);
-
-        Cookie cUser = new Cookie("cUser", userName);
-        Cookie cPass = new Cookie("cPass", n);
-        Cookie cRem = new Cookie("cRem", rem);
-
-        if (rem != null) {
-            cUser.setMaxAge(60 * 60 * 24 * 30);
-            cPass.setMaxAge(60 * 60 * 24 * 30);
-            cRem.setMaxAge(60 * 60 * 24 * 30);
-        } else {
-            cUser.setMaxAge(0);
-            cPass.setMaxAge(0);
-            cRem.setMaxAge(0);
-        }
-
-        response.addCookie(cUser);
-        response.addCookie(cPass);
-        response.addCookie(cRem);
-
-        if (a == null) {
-            request.setAttribute("messError", "Wrong username or password !!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            response.sendRedirect("home");
-        }
+        processRequest(request, response);
     }
 
     /**

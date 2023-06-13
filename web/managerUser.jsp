@@ -17,7 +17,6 @@
 
     <body>
         <jsp:include page="header.jsp"/>
-        <h1>${a}</h1>
         <div class="container">
             <div style='width: 100%;' class="table-wrapper">
                 <div class="table-title">
@@ -38,7 +37,7 @@
                         <tr>
                             <th>ID</th>
                             <th>UserName</th>
-                            <th>Password</th>
+                            <th>FullName</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
@@ -50,7 +49,7 @@
                             <tr>
                                 <td>${o.id}</td>
                                 <td>${o.userName}</td>
-                                <td>${o.password}</td>
+                                <td>${o.name}</td>
                                 <td>${o.email}</td>
                                 <td>${o.phone}</td>
                                 <td>${o.address}</td>

@@ -27,7 +27,7 @@
                 <div style="" class="container"> 
                     <div class="detail__wrap">
                         <div class="detail__img">
-                            <img class="img__pur" style='height: auto;
+                            <img style='height: auto;
                                  width: 100%;' src="<c:out value="${p.getImage()}" />">
                         </div>
                         <div class="detail__content">
@@ -37,17 +37,16 @@
                                 <p class="detail__price">$ <c:out value="${p.getPrice()}" /></p>
                             </div>
 
-                            <form action="">
-                                <div class="addProduct">
-                                    <div class="add_button">
-                                        <form name="f" action="" method="post">
-                                            <label style="font-size: 12px" for="qty">Quantity:</label>
-                                            <input type="number" id="num" name="Qty" value="1">
-                                            <input type="button" class="btn" data-dismiss="modal" onclick="buy(${detail.id})" value="Add to cart">
-                                        </form>
+                            <div class="addProduct">
+                                <form name="f" action="" method="post">
+                                    <label for="qty">Quantity</label>
+                                    <div class="add_qty">
+                                        <label for="qty">Quantity</label>
+                                        <input type="number" id="qty" name="num" value="1">
                                     </div>
-                                </div>
-                            </form>
+                                    <input type="button" class="btn" data-dismiss="modal" onclick="buy(${p.id})" value="Add to cart">
+                                </form>
+                            </div>
 
                         </div>
                     </div>
@@ -88,13 +87,14 @@
             </div>
             <jsp:include page="footer.jsp"/>
         </div>
+
         <script src="js/main.js"></script>
-        <script type="text/javascript">
-                                                function buy(id) {
-                                                    var m = document.f.num.value;
-                                                    document.f.action = "buy?id=" + id + "&num=" + m;
-                                                    document.f.submit();
-                                                }
-        </script>
     </body>
 </html>
+<script type="text/javascript">
+                                        function buy(id) {
+                                            var m = document.f.num.value;
+                                            document.f.action = "buy?id=" + id + "&num=" + m;
+                                            document.f.submit();
+                                        }
+</script>

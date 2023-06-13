@@ -40,7 +40,7 @@
                     <label>Category</label>
                     <select name="category" class="">
                         <c:forEach items="${listC}" var="o">
-                            <option value="${o.cid}" ${o.cid == $detail.cid ? "selected" : ""}>${o.cname}</option>
+                            <option value="${o.cid}" ${o.cid == detail.cid ? "selected" : ""}>${o.cname}</option>
                         </c:forEach>
                     </select>
                     <a href="managerProduct">         

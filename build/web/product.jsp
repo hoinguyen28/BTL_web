@@ -105,95 +105,6 @@
                             </form>
                         </div>
                     </div>
-                    <!--begin hotsale-->
-                    <div class="sidebar__sale">
-                        <h2>HOT SALE</h2>
-                        <div class="sidebar__sale1">
-                            <div class="sidebar__img">
-                                <a href="#">
-                                    <img src="assets/image02.jpg" alt="ghe dep">
-                                </a>
-                            </div>
-                            <div class="sidebar__text">
-                                <div class="sidebar__farm">
-                                    <span><a href="#">Egon Wooden Chair</a></span>
-                                    <ul class="sidebar__star">
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="far fa-star"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <del class="sidebar__off">$75,00</del>
-                                <div class="sidebar__hot">$55,00</div>
-                            </div>
-                        </div>
-                        <div class="sidebar__sale1">
-                            <div class="sidebar__img">
-                                <a href="#">
-                                    <img src="assets/img15.jpg" alt="ghe dep">
-                                </a>
-                            </div>
-                            <div class="sidebar__text">
-                                <div class="sidebar__farm">
-                                    <span><a href="#">Oyo Cantilever Chair</a></span>
-                                </div>
-                                <del class="sidebar__off">$75,00</del>
-                                <div class="sidebar__hot">$55,00</div>
-                            </div>
-                        </div>
-                        <div class="sidebar__sale1">
-                            <div class="sidebar__img">
-                                <a href="#">
-                                    <img src="assets/img16.jpg" alt="ghe dep">
-                                </a>
-                            </div>
-                            <div class="sidebar__text">
-                                <div class="sidebar__farm">
-                                    <span><a href="#">Kurve Chair</a></span>
-                                    <ul class="sidebar__star">
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-star"></i>
-                                        </li>
-                                        <li>
-                                            <i class="far fa-star"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <del class="sidebar__off">$75,00</del>
-                                <div class="sidebar__hot">$55,00</div>
-                            </div>
-                        </div>
-                        <div class="sidebar__sale1">
-                            <div class="sidebar__img">
-                                <a href="#">
-                                    <img src="assets/img12.jpg" alt="ghe dep">
-                                </a>
-                            </div>
-                            <div class="sidebar__text">
-                                <div class="sidebar__farm">
-                                    <span><a href="#">Marvelous Wooden Chair</a></span>
-                                </div>
-                                <del class="sidebar__off">$75,00</del>
-                                <div class="sidebar__hot">$55,00</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end  hotsale-->
                 </div>    
                 <!--end sidebar-->
                 <!--begin right-->
@@ -204,19 +115,6 @@
                             <ul class="right__line">
                                 <li>
                                     <a href="#" class="right__link1" >Default Sorting </a>
-                                    <div class="right__drop">
-                                        <ul class="right__unstyled">
-                                            <li>
-                                                <a href="#">ASC</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">DSC</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">PRICE</a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </li>
                                 <li>
                                     <a class="right__link" href="#">
@@ -229,22 +127,6 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
-                        <div class="right__text">
-                            <p>Showing 
-                                <span>1–9</span> 
-                                of 
-                                <span>65</span>  
-                                results </p>
-                            <p>View 
-                                <a href="#">9</a>
-                                /
-                                <a href="#">18</a>
-                                /
-                                <a href="#">27</a>
-                                /
-                                <a href="#">ALL</a>
-                            </p>
                         </div>
                     </div>
                     <!--end header-->
@@ -274,7 +156,7 @@
                                         <div class="product__item-links">
                                             <ul style='background-color: white;'>
                                                 <li style='width: auto;padding: 0;'><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
-                                                <li style='width: auto;padding: 0;'><a href="#" class="product__link-item" ><i class="far fa-heart"></i></a></li>
+                                                <li style='width: auto;padding: 0;'><a href="favoriteProduct?pid=${o.id}" class="product__link-item" ><i class="far fa-heart"></i></a></li>
                                                 <li style='width: auto;padding: 0;'><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
                                             </ul>
                                         </div>

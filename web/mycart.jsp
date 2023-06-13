@@ -6,65 +6,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
-            table {
-                border-collapse: collapse;
-                width: 100%;
-                margin-top: 25px;
-            }
-
-            th, td {
-                padding: 8px;
-                text-align: left;
-                border-bottom: 1px solid #ddd;
-            }
-
-            th {
-                background-color: #f2f2f2;
-            }
-
-            .tr {
-                text-align: right;
-            }
-            form {
-                display: inline;
-            }
-
-            h1 {
-                text-align: center;
-            }
-
-            h3 {
-                text-align: right;
-                margin-right: 30px;
-            }
-
-            hr {
-                border: none;
-                border-top: 1px solid #ddd;
-                margin: 20px 0;
-            }
-
-            .center {
-                text-align: center;
-                width: 100%;
-            }
-
-            .quantity {
-                display: flex;
-                align-items: center;
-            }
-
-            .quantity button {
-                margin: 0 5px;
-            }
-        </style>
+        <link rel="stylesheet" href="style/cart.css">
     </head>
     <body>
         <jsp:include page="header.jsp"/>
         <div class="container">
             <center>
-                <h1>Cart</h1>
+                <h1 class="cart__title">Cart</h1>
                 <table>
                     <tr>
                         <th>No</th>
@@ -82,12 +30,13 @@
                             <td>${tt}</td>
                             <td>${i.product.name}</td>
                             <td class="quantity">
-                                <button><a href="process?num=-1&id=${i.product.id}">-</a></button>
-                                ${i.quantity}
-                                <button><a href="process?num=1&id=${i.product.id}">+</a></button>
+                                <button><a class="quantity__button quantity__reduce" href="process?num=-1&id=${i.product.id}">-</a></button>
+                                <span class="quantity__value">${i.quantity}</span>
+                                <button><a class="quantity__button quantity__increase" href="process?num=1&id=${i.product.id}">+</a></button>
                             </td>
-                            <td class="tr">${i.price}</td>
-                            <td class="tr">${i.price*i.quantity}</td>
+
+                            <td class="tr">${i.price} $</td>
+                            <td class="tr">${i.price*i.quantity} $</td>
                             <td class="center">
                                 <form action="process" method="post">
                                     <input class="btn" type="hidden" name="id" value="${i.product.id}">
@@ -97,17 +46,16 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <h3 class="center">Total money: $ ${o.totalMoney}</h3>
+                <h3 class="center">Total money:   ${o.totalMoney} $</h3>
                 <hr>
                 <form action="checkout" method="post" class="center">
-                    <input type="submit" value="Check Out">
+                    <input class="btn" type="submit" value="Check Out">
                 </form>
-                <hr>
-                <div class="center">
-                    <a href="home">Back to Home Page</a>
-                </div>
+                <a  href="home">
+                    <input class="btn" type="button" value="Back to Home">
+                </a>
             </center>
         </div>
-        <%--<jsp:include page="footer.jsp.jsp"/>--%>
+
     </body>
 </html>

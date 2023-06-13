@@ -105,23 +105,12 @@ public class userDAO {
     }
 
     public void delete(String uid) {
-        String query = "DELETE FROM `card` \n"
-                + "WHERE user_id = ?;\n"
-                + "DELETE FROM `order`\n"
-                + "WHERE user_id = ?;\n"
-                + "DELETE FROM `comment`\n"
-                + "WHERE user_id = ?;\n"
-                + "DELETE FROM `sold`\n"
-                + "WHERE user_id = ?;\n"
-                + "DELETE FROM user \n"
+        String query = "DELETE FROM user \n"
                 + "WHERE id = ?";
         try {
             Connection conn = DBContext.getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1, uid);
-            ps.setString(2, uid);
-            ps.setString(3, uid);
-            ps.setString(4, uid);
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -143,6 +132,25 @@ public class userDAO {
             ps.setInt(6, isAdmin);
             ps.setString(7, address);
             ps.setInt(8, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    
+        public void updateProfile(int id, String userName, String email, String name, String phone, String address, String password) {
+        String query = "UPDATE user\n"
+                + "SET username = ?, password = ?, name = ?, email = ?, phone = ?, isadmin = 0, address = ?\n"
+                + "WHERE id = ?;";
+        try {
+            Connection conn = DBContext.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            ps.setString(3, name);
+            ps.setString(4, email);
+            ps.setString(5, phone);
+            ps.setString(6, address);
+            ps.setInt(7, id);
             ps.executeUpdate();
         } catch (SQLException e) {
         }

@@ -123,10 +123,15 @@ public class orderDAO {
 
         return null;
     }
-    
-//    public static void main(String[] args) {
-//        orderDAO o = new orderDAO();
-//        List<product> list = o.getAllProductByOrder(2);
-//        System.out.println(list.get(0).getName());
-//    }
+    public void updateStatus(int orderId) {        
+        String query = "UPDATE `order` SET status = '5' WHERE id = ?;";
+        try {
+            Connection conn = DBContext.getConnection();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, orderId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+   
 }

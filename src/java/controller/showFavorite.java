@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.userDAO;
+import dal.productDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,16 +13,16 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.user;
-import util.MaHoa;
+import java.util.ArrayList;
+import java.util.List;
+import model.Cart1;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "login", urlPatterns = {"/login"})
-public class login extends HttpServlet {
+@WebServlet(name = "showFavorite", urlPatterns = {"/showFavorite"})
+public class showFavorite extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,19 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet showFavorite</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet showFavorite at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,8 +63,26 @@ public class login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        request.getRequestDispatcher("login").forward(request, response);
-
+        productDAO d = new productDAO();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("favorite")) {
+                    txt += o.getValue();
+                }
+            }
+        }
+        List<model.product> list = new ArrayList<>();
+        String[] favo = txt.split("/");
+        
+        for (int i=0; i<favo.length; i++) {
+            int a = Integer.parseInt(favo[i]);
+            model.product p = d.getProductById(a);
+            list.add(p);
+        }
+        request.setAttribute("listf", list);
+        request.getRequestDispatcher("favoriteProduct.jsp").forward(request, response);
     }
 
     /**
@@ -66,43 +96,7 @@ public class login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        processRequest(request, response);
-        response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("userName");
-        String password = request.getParameter("password");
-        String rem = request.getParameter("rem");
-        String n = request.getParameter("password");
-
-        password = MaHoa.toSHA1(password);
-        userDAO uDAO = new userDAO();
-        user a = uDAO.login(userName, password);
-
-        Cookie cUser = new Cookie("cUser", userName);
-        Cookie cPass = new Cookie("cPass", n);
-        Cookie cRem = new Cookie("cRem", rem);
-
-        if (rem != null) {
-            cUser.setMaxAge(60 * 60 * 24 * 30);
-            cPass.setMaxAge(60 * 60 * 24 * 30);
-            cRem.setMaxAge(60 * 60 * 24 * 30);
-        } else {
-            cUser.setMaxAge(0);
-            cPass.setMaxAge(0);
-            cRem.setMaxAge(0);
-        }
-
-        response.addCookie(cUser);
-        response.addCookie(cPass);
-        response.addCookie(cRem);
-
-        if (a == null) {
-            request.setAttribute("messError", "Wrong username or password !!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("acc", a);
-            response.sendRedirect("home");
-        }
+        processRequest(request, response);
     }
 
     /**
