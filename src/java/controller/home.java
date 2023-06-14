@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -43,6 +44,19 @@ public class home extends HttpServlet {
         categoryDAO cDAO = new categoryDAO();
         List<category> listC = cDAO.selectAll();
         
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("favorite")) {
+                    txt += o.getValue();
+                }
+            }
+        }
+        String[] favo = txt.split("/");
+        int size = favo.length;
+
+        request.setAttribute("size", size);
         request.setAttribute("dataP", listP);
         request.setAttribute("dataC", listC);
         request.getRequestDispatcher("index.jsp").forward(request, response);  

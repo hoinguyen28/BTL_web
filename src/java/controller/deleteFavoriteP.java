@@ -51,7 +51,7 @@ public class deleteFavoriteP extends HttpServlet {
                 if (out.isEmpty()) {
                     out = favo[i];
                 } else {
-                    txt += "/" + favo[i];
+                    out += "/" + favo[i];
                 }
             }
         }
@@ -59,8 +59,7 @@ public class deleteFavoriteP extends HttpServlet {
             Cookie c = new Cookie("favorite", out);
             c.setMaxAge(60 * 60 * 24 * 5);
             response.addCookie(c);
-            request.getRequestDispatcher("showFavorite").forward(request, response);
-
+            response.sendRedirect("showFavorite");
         }
 
     }

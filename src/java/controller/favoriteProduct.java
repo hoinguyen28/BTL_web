@@ -12,6 +12,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -50,6 +52,7 @@ public class favoriteProduct extends HttpServlet {
         } else {
             int a =0;
             String[] favo = txt.split("/");
+            
             for (int i = 0; i < favo.length; i++) {
                 if (favo[i].equals(id)) {
                     a = 1;
@@ -60,9 +63,13 @@ public class favoriteProduct extends HttpServlet {
                 txt += "/" + id;
             }
         }
+        String[] favo = txt.split("/");
+        int size = favo.length;
         Cookie c = new Cookie("favorite", txt);
         c.setMaxAge(60 * 60 * 24 * 5);
         response.addCookie(c);
+        request.setAttribute("size", size);
+
         request.getRequestDispatcher("home").forward(request, response);
     }
 

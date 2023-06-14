@@ -207,9 +207,17 @@ public class productDAO {
     }
     
     public void addOrder(user c, Cart1 cart) {
-       try {
-            String sql = "update web.product set qty=qty-? where id=?";
+        try {
+            String sql = "insert into btlweb3.order(user_id, product_id, amount, status) values(?, ?, ?, '1')";
             Connection conn = DBContext.getConnection();
+            ps = conn.prepareStatement(sql);
+            for(Item i:cart.getItems()){
+                ps.setInt(1, c.getId());
+                ps.setInt(2, i.getProduct().getId());
+                ps.setInt(3, i.getQuantity());
+                ps.executeUpdate();
+            }
+            sql = "update btlweb3.product set qty=qty-? where id=?";
             ps = conn.prepareStatement(sql);
             for(Item i:cart.getItems()){
                 ps.setInt(1, i.getQuantity());
@@ -220,4 +228,6 @@ public class productDAO {
             System.out.println(e);
         }
     }
+    
 }
+

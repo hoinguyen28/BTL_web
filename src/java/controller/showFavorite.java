@@ -75,13 +75,16 @@ public class showFavorite extends HttpServlet {
         }
         List<model.product> list = new ArrayList<>();
         String[] favo = txt.split("/");
-        
-        for (int i=0; i<favo.length; i++) {
+        int size = favo.length;
+
+        for (int i = 0; i < favo.length; i++) {
             int a = Integer.parseInt(favo[i]);
             model.product p = d.getProductById(a);
             list.add(p);
         }
         request.setAttribute("listf", list);
+        request.setAttribute("size", size);
+
         request.getRequestDispatcher("favoriteProduct.jsp").forward(request, response);
     }
 

@@ -22,6 +22,4 @@ public class MaHoa {
 		}
 		return result;
 	}
-
-	
 }

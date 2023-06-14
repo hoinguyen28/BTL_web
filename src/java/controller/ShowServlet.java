@@ -70,6 +70,8 @@ public class ShowServlet extends HttpServlet {
                 }
             }
         }
+        
+        
         Cart1 cart = new Cart1(txt, list);
         request.setAttribute("cart", cart);
         request.getRequestDispatcher("mycart.jsp").forward(request, response);

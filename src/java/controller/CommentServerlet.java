@@ -78,7 +78,7 @@ public class CommentServerlet extends HttpServlet {
         request.setAttribute("product", p);
         request.setAttribute("listUser", listUser);
         request.setAttribute("listComment", listComment);
-        request.getRequestDispatcher("infor_product.jsp").forward(request, response);
+        request.getRequestDispatcher("detailProduct.jsp").forward(request, response);
     } 
 
     /** 

@@ -157,7 +157,7 @@
                                             <ul style='background-color: white;'>
                                                 <li style='width: auto;padding: 0;'><a href="#" class="product__link"><i class="fas fa-shopping-bag"></i><span>Add to Cart</span></a></li>
                                                 <li style='width: auto;padding: 0;'><a href="favoriteProduct?pid=${o.id}" class="product__link-item" ><i class="far fa-heart"></i></a></li>
-                                                <li style='width: auto;padding: 0;'><a href="#" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
+                                                <li style='width: auto;padding: 0;'><a href="comment?productId=${o.id}" class="product__link-item" ><i class="fas fa-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -51,6 +51,9 @@
                 <form action="checkout" method="post" class="center">
                     <input class="btn" type="submit" value="Check Out">
                 </form>
+                <a  href="pur">
+                    <input class="btn" type="button" value="Process">
+                </a>
                 <a  href="home">
                     <input class="btn" type="button" value="Back to Home">
                 </a>

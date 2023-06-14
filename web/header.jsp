@@ -19,6 +19,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="style/home.css">
         <title>Schon</title>
+        <style>
+            .submenu {
+                display: none;
+                transition:0.5s ease;
+
+            }
+            .header__listhelo:hover .submenu {
+                display: block;
+                transition:0.5s ease;
+
+            }
+        </style>
     </head>
     <body>
         <!--BEGIN HEADER-->
@@ -49,7 +61,7 @@
                                     <i class="fas fa-angle-down"></i>
                                 </a>
                             </li>
-                            <li class="header__list">
+                            <li style="margin-right: 10px;" class="header__list">
                                 <a href="product" class="drop-link" 
                                    >PRODUCTS
                                     <i class="fas fa-angle-down"></i>
@@ -63,25 +75,22 @@
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.acc != null}">
-                                <li class="header__list">
+                                <li class="header__listhelo">
                                     <a href="" class="drop-link" >HELLO ${sessionScope.acc.userName}
                                         <i class="fas fa-angle-down"></i>
                                     </a>
-                                </li>
-                                <li class="header__list">
-                                    <a href="logout" class="drop-link" >LOGOUT
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                </li>
-                                <li class="header__list">
-                                    <a href="loadEditProfile?uid=${sessionScope.acc.id}" class="drop-link" >EDIT PROFILE
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
-                                </li>
-                                <li class="header__list">
-                                    <a href="pur" class="drop-link" >PUR
-                                        <i class="fas fa-angle-down"></i>
-                                    </a>
+                                    <ul class = "submenu">
+                                        <li class="header__list">
+                                            <a href="logout" class="drop-link" >LOGOUT
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                        </li>
+                                        <li class="header__list">
+                                            <a href="loadEditProfile?uid=${sessionScope.acc.id}" class="drop-link" >EDIT PROFILE
+                                                <i class="fas fa-angle-down"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </c:if>
                         </ul>
@@ -101,7 +110,9 @@
                             <li class="react__love modal__header-click">
                                 <a href="showFavorite"> 
                                     <i class="far fa-heart">
-                                        <span class="num">${size}</span>
+                                        <c:if test="${sessionScope.acc != null}">
+                                            <span class="num">${size}</span>
+                                        </c:if>
                                     </i>
                                 </a> 
                             </li>
@@ -109,16 +120,10 @@
                             <li class="cart-list modal__header-click">
                                 <a href="show">
                                     <i  class="fas fa-shopping-bag" >
-                                        <span class="num">3</span>
+                                        <span class="num">${sizec}</span>
                                     </i>
                                 </a>
                             </li>
-                            <li class="cart-list modal__header-click">
-                                <a href="">
-                                    <i class="fa-solid fa-user"></i>
-                                </a>
-                            </li>
-                            
                             <!-- end form login -->
                         </ul>
                     </div>

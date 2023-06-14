@@ -20,7 +20,7 @@
             <div class="modal-content" style="margin: 40px auto">           
                 <div class="modal-header">
                     <h4 class="modal__title">Edit Product</h4>
-                    <a href="managerUser">
+                    <a href="home">
                         <i class="fa-regular fa-circle-xmark"></i>
                     </a>
                 </div>
@@ -28,7 +28,7 @@
                     <label for="productId">ID</label>
                     <input value ="${user.id}" type="text" id="productName" name="id" readonly required>
                     <label for="productName">UserName</label>
-                    <input value ="${user.userName}" type="text" id="productName" name="userName" required>
+                    <input value ="${user.userName}" type="text" id="productName" name="userName" readonly required>
                     <label for="productPrice">Password</label>
                     <input value ="${user.password}" type="text" id="productPrice" name="password" required>
                     <label for="productPrice">Name</label>

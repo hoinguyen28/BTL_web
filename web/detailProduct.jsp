@@ -1,6 +1,6 @@
 <%-- 
-    Document   : detailProduct
-    Created on : May 26, 2023, 1:21:11 AM
+    Document   : nhap
+    Created on : May 30, 2023, 9:17:10 PM
     Author     : Admin
 --%>
 
@@ -12,87 +12,89 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style>
-            .detail {
-                padding: 100px 0;
-            }
-
-            .detail__wrap {
-                display: flex;
-                justify-content: space-between
-            }
-
-            .detail__img {
-                width: 200%;
-                margin-right: 50px;
-            }
-
-            .detail__content {
-                margin-top: 30px;
-            }
-
-            .detail__name {
-
-                font-size: 44px;
-                line-height: 46px;
-                font-weight: 300;
-                letter-spacing: 5px;
-                word-spacing: -4px;
-                margin: 0 0 15px;
-                color: #000;
-            }
-
-            .detail__des {
-                font-size: 19px;
-                padding-bottom: 30px;
-                border-bottom: 1px #b6b6b6 solid;
-                color: #b6b6b6;
-                line-height: 21px;
-                font-size: 16px;
-                margin-bottom: 60px;
-            }
-
-            .detail__price {
-                display: block;
-                font-size: 30px;
-                line-height: 32px;
-                font-family: "Montserrat", sans-serif;
-                font-weight: 400;
-                letter-spacing: -1px;
-                color: #000;
-            }
-        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">  
+        <link href="./assets/fonts/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style/home.css">
+        <link rel="stylesheet" href="style/product.css">
     </head>
     <body>
-        <jsp:include page="header.jsp"/>
-        <div class="detail">
-            <div class="container"> 
-                <div class="detail__wrap">
-                    <div class="detail__img">
-                        <img style='height: auto;
-                             width: 100%;' src="${detail.image}">
-                    </div>
-                    <div class="detail__content">
-                        <h1 style="margin-bottom: 50px;" class="detail__name">${detail.name}</h1>
-                        <p class="detail__des">${detail.des}</p>
-                        <div style="text-align: center; margin-bottom: 30px;" class="product__item-price">
-                            <p class="detail__price">${detail.price}$</p>
+        <div class="app">
+            <jsp:include page="header.jsp"/>
+            <c:set var="p" value="${product}" />
+            <div style="background-color: #F6F6F6" class="detail">
+                <div style="" class="container"> 
+                    <div class="detail__wrap">
+                        <div class="detail__img">
+                            <img style='height: auto;
+                                 width: 100%;' src="<c:out value="${p.getImage()}" />">
                         </div>
-                        <form name="f" action="" method="post">
-                            <input type="text" name="num" value="1">
-                            <input type="button" class="btn" data-dismiss="modal" onclick="buy(${detail.id})" value="Add to cart">
-                        </form>
+                        <div class="detail__content">
+                            <h1 style="margin-bottom: 50px;" class="detail__name"><c:out value="${p.getName()}" /></h1>
+                            <p class="detail__des"><c:out value="${p.getDes()}" /></p>
+                            <div style="text-align: center; margin-bottom: 30px;" class="product__item-price">
+                                <p class="detail__price"><c:out value="${p.getPrice()}" /> $</p>
+                            </div>
+
+                            <div class="addProduct">
+                                <form name="f" action="" method="post">
+                                    <label for="qty">Quantity</label>
+                                    <div class="add_qty">
+                                        <label for="qty">Quantity</label>
+                                        <input type="number" id="qty" name="num" value="1">
+                                    </div>
+                                    <input type="button" class="btn" data-dismiss="modal" onclick="buy(${p.id})" value="Add to cart">
+                                </form>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="comment">
+                <h2>Đánh Giá Sản Phẩm</h2>
+
+                <form action="addreview">
+                    <div class="review">
+                        <div class="add_review">
+                            <input type="hidden" name="productId" value="${p.getId()}">
+
+                            <label for="message">Review</label>
+                            <textarea id="message" name="message" rows="6" cols="200"></textarea>
+                        </div>
+
+                        <div class="sub_review">
+                            <input type="submit" value="ADD REVIEW">
+                        </div>
+                    </div>
+                </form>
+
+                <c:set var="listComment" value="${requestScope.listComment}" />
+                <c:set var="listUser" value="${requestScope.listUser}" />
+                <c:forEach var="i" items="${listComment}" varStatus="status">
+                    <div class="comment_n">
+                        <div class="comment_user">
+                            <p><c:out value="${listUser[status.index].getName()}"/></p>
+                        </div>
+
+                        <div class="comment_text">
+                            <p><c:out value="${i.getCommentText()}"/></p>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
+            <jsp:include page="footer.jsp"/>
         </div>
-        <jsp:include page="footer.jsp"/>
+
+        <script src="js/main.js"></script>
     </body>
 </html>
 <script type="text/javascript">
-    function buy(id) {
-        var m = document.f.num.value;
-        document.f.action = "buy?id=" + id + "&num=" + m;
-        document.f.submit();
-    }
+                                        function buy(id) {
+                                            var m = document.f.num.value;
+                                            document.f.action = "buy?id=" + id + "&num=" + m;
+                                            document.f.submit();
+                                        }
 </script>

@@ -9,15 +9,16 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/addUser.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/editProduct.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/productDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/detailProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/addUser.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/editUser.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/product.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/ProcessServlet.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/style/process.css</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/favoriteProduct.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/style/magerProduct.css</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/Cart1.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/category.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/filterProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/user.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/mycart.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/categoryDAO.java</file>
@@ -26,6 +27,9 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/ShopServlet.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/searchProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/orderDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/AddReviewServerlet.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/process.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/style/cart.css</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/managerUser.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadAddProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/addProduct.java</file>
@@ -34,22 +38,28 @@
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/managerProduct.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/home.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/editProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/util/MaHoa.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadEditProfile.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteFavoriteP.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/style/purchase.css</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/editProfile.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadEditUser.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadEditProduct.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/login.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/cart.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/favoriteProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/BuyServlet.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/showFavorite.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteUser.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/MuaServerlet.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/CheckoutServlet.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/dal/DBContext.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/index.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/infor_product.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/editUser.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/ShowServlet.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/model/order.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/web/purchase.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/loadSizeFavoriteP.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/login.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/deleteProduct.java</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/BTL_web/src/java/controller/CommentServerlet.java</file>
